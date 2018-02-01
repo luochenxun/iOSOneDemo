@@ -79,13 +79,6 @@
     }];
     [buttonBox flex_addSubview:secondBtn];
     
-//    XXXXButton *secondBtn = [XXXXButton buttonWithType:XXXXButtonTypeCheckbox];
-//    secondBtn.flexSize = CGSizeMake(220, 40);
-//    [secondBtn setButtonText:@"次级按钮" onPressBlock:^(id btn) {
-//        NSLog(@"Click secondary button");
-//    }];
-//    [buttonBox flex_addSubview:secondBtn];
-    
     [buttonBox adjustLayoutHeightBySubviews];
 }
 

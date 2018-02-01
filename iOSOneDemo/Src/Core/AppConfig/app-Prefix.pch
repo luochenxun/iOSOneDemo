@@ -38,6 +38,8 @@
 #import "AppServiceManager.h"
 #import "AppService.h"
 #import "XXXXUIKit.h"
+#import "XXXXBaseViewController.h"
+#import "XXXXBaseNavigationController.h"
 
 
 /**--------------
@@ -45,7 +47,8 @@
  *--------------*/
 
 #import "DemoManager.h"
-
+// ------ app module
+#import "ControllerManageService.h"
 
 /**--------------
  *  Categories

@@ -18,7 +18,7 @@
 
 #define FUNC_IMPLEMENT_SINGLETON(className)                                                        \
     static className *mInstance = nil;                                                             \
-    +(className *)sharedInstance {                                                                 \
+    + (className *)sharedInstance {                                                                 \
         static dispatch_once_t once;                                                               \
         dispatch_once(&once, ^{                                                                    \
             mInstance = [[self alloc] init];                                                       \

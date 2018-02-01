@@ -21,10 +21,11 @@ typedef NS_ENUM(NSInteger, AppServicePriority)
 
 @protocol AppService <UIApplicationDelegate>
 
+
 @required
-/**
- 服务名
- */
+
+
+/** 服务名 */
 + (NSString *)serviceName;
 
 

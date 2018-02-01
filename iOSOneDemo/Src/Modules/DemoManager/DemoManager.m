@@ -9,6 +9,7 @@
 #import "DemoManager.h"
 #import "DemoDataModel.h"
 #import "DemoController.h"
+#import "DemoMDController.h"
 
 @interface DemoManager ()
 
@@ -45,13 +46,15 @@
 
 - (void)registerDemo:(Class)demoClass {
     DemoType type = DemoTypeCategory;
-    if ([demoClass isSubclassOfClass:[DemoController class]]) {
+    if ([demoClass isSubclassOfClass:[DemoController class]] || [demoClass isSubclassOfClass:[DemoMDController class]]) {
         type = DemoTypeController;
     }
+    DemoPriority priority = ([demoClass respondsToSelector:@selector(priority)])?[demoClass priority]:DemoPriorityDefault;
     [_demos addObject:[[DemoDataModel alloc] initWithName:[demoClass name]
                                               displayName:[demoClass displayName]
                                                    parane:[demoClass parentName]
-                                                     type:type]];
+                                                     type:type
+                                                 priority:priority]];
 }
 
 - (NSArray *)exportDemos {
@@ -65,7 +68,7 @@
         
         if (demo.parentName == nil || [demo.parentName isEqualToString:@"root"]) {
             demo.deep = 1;
-            [exportDemos addObject:demo];
+            [exportDemos insertObject:demo atIndex:0];
             [walkDemos removeObject:demo];
         }
     }
@@ -96,6 +99,8 @@
         }
     }
     
+    [self treeSortDemos:exportDemos];
+    
     return [exportDemos copy];
 }
 
@@ -115,6 +120,25 @@
         deep--;
     }
     return tempDemos;
+}
+
+- (void)treeSortDemos:(NSMutableArray<DemoDataModel *> *)demos {
+    if (demos.count > 0) {
+        [demos sortUsingComparator:^NSComparisonResult(DemoDataModel *obj1, DemoDataModel *obj2) {
+            if (obj1.priority > obj2.priority) {
+                return NSOrderedAscending;
+            }
+            else if (obj1.priority == obj2.priority) {
+                return NSOrderedSame;
+            } else {
+                return NSOrderedDescending;
+            }
+        }];
+        
+        for (DemoDataModel *demo in demos) {
+            [self treeSortDemos:demo.demos];
+        }
+    }
 }
 
 

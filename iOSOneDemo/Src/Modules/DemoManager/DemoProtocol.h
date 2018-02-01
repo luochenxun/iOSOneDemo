@@ -9,6 +9,15 @@
 #ifndef DemoProtocol_h
 #define DemoProtocol_h
 
+typedef NS_ENUM(NSInteger, DemoPriority)
+{
+    DemoPriorityLow = -4,
+    DemoPriorityMediumLow = -2,
+    DemoPriorityDefault = 0,
+    DemoPriorityMediumHight = 2,
+    DemoPriorityHight = 4,
+};
+
 @protocol DemoProtocol <NSObject>
 
 @required
@@ -21,6 +30,12 @@
 
 /** Demo父类别名称 */
 + (NSString *)parentName;
+
+
+@optional
+
+/** Demo在列表中排序的优先级 */
++ (DemoPriority)priority;
 
 @end
 

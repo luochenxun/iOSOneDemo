@@ -25,7 +25,7 @@
 
 #pragma mark - < Life circle >
 
-+(instancetype)LayoutWithFrame:(CGRect)frame direction:(FlexDirection)direction justityContent:(FlexJustityContent)content alignItems:(FlexAlignItems)align{
++ (instancetype)LayoutWithFrame:(CGRect)frame direction:(FlexDirection)direction justityContent:(FlexJustityContent)content alignItems:(FlexAlignItems)align{
     FlexLinearLayout * layout = [[FlexLinearLayout alloc] initWithFrame:frame];
     layout.flexDirection = direction;
     layout.justityContent = content;
@@ -33,7 +33,7 @@
     return layout;
 }
 
-+(instancetype)LayoutWithDirection:(FlexDirection)direction justityContent:(FlexJustityContent)content alignItems:(FlexAlignItems)align{
++ (instancetype)LayoutWithDirection:(FlexDirection)direction justityContent:(FlexJustityContent)content alignItems:(FlexAlignItems)align{
     return [FlexLinearLayout LayoutWithFrame:CGRectZero direction:direction justityContent:content alignItems:align];
 }
 

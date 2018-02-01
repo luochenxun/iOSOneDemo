@@ -26,6 +26,15 @@
 @property (nonatomic , readonly, assign) CGFloat flex_totalHeigh;
 
 /**
+ 当参数数组为一个值时，此margin设为所有边的Margin；2个值时，第一个设为水平方向两边的Margin，第二个为垂直方向两边的Margin；为4个值时分别为“左上右下（顺时针）”四个方向的边距
+ example:
+ 
+ - view.flex_margin = @[@(1)]
+ - view.flex_margin = @[@(1),@(2)]
+ - view.flex_margin = @[@(1),@(1),@(1),@(1)]
+ */
+@property (nonatomic , copy) NSArray<NSNumber *> *flex_margin;
+/**
  *  Margin is the distance between two views.
  */
 @property (nonatomic , assign) CGFloat flex_marginTop;
@@ -64,9 +73,6 @@
  */
 - (void)flex_updateLayout;
 
-- (CGFloat)calculateWidthWithContent;
-- (CGFloat)calculateHeightWithContent;
-
 /**
  设置 View的 Margin边距，参数为数组。 <p>
  Usage:                                   <br>
@@ -86,14 +92,14 @@
 /**
  *  estimate the flex-layout-height of the given text,( often use in label or button );
  */
-- (CGFloat)flex_estimateHeightByText:(NSString *)text;
-- (CGFloat)flex_estimateTotalHeightByText:(NSString *)text;
+- (CGFloat)flex_estimateWidthWithContent;
+- (CGFloat)flex_estimateHeightWithContent;
 
 /**
  *  estimate the flex-layout-width of the given text,( often use in label or button );
  */
-- (CGFloat)flex_estimateWidthByText:(NSString *)text;
-- (CGFloat)flex_estimateTotalWidthByText:(NSString *)text;
+- (CGFloat)flex_estimateTotalWithContent;
+- (CGFloat)flex_estimateTotalHeightWithContent;
 
 
 @end

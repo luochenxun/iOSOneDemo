@@ -42,15 +42,28 @@
 #pragma mark - < Init Methods >
 
 - (void)initWindow {
-    self.title = self.demoName;
+    if (_demoDesName) {
+        self.title = _demoDesName;
+    } else {
+        self.title = [_demoName stringByDeletingPathExtension];
+    }
 }
 
 - (void)initEnvironment {
     _readMDErrorMsg = @"File Not Found";
-    
+    if (_demoName && ![_demoName.pathExtension isEqualToString:@"md"]) {
+        _demoName = [_demoName stringByAppendingString:@".md"];
+    }
     NSString *mdFile = [FCFileManager pathForMainBundleDirectoryWithPath:_demoName];
     if ([FCFileManager existsItemAtPath:mdFile]) {
         NSString *mdContent = [FCFileManager readFileAtPath:mdFile];
+        mdContent = [@"<style>\
+                     pre{\
+                         font-size:8px;\
+                         background-color:#e7e7e7;\
+                     width:2000\
+                     }\
+                     </style>\n\n" stringByAppendingString:mdContent];
         NSError *error;
         _demoMDContent = [MMMarkdown HTMLStringWithMarkdown:mdContent error:&error];
         if (error) {
@@ -62,6 +75,7 @@
 - (void)initUI {
     _webView = [[UIWebView alloc] init];
     _webView.frame = self.view.bounds;
+    _webView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     [self.view addSubview:_webView];
 }
 

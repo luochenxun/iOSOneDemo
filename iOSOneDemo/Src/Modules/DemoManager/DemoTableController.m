@@ -37,6 +37,10 @@
     [self initDataSource];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -57,8 +61,9 @@
 }
 
 - (void)initUI {
-    _tableView =[[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
-    _tableView.separatorStyle =UITableViewCellSeparatorStyleNone;
+    _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.showsHorizontalScrollIndicator =NO;
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -176,7 +181,10 @@
     //判断点击的cell 对应的数据是否是city
     if (demo.type == DemoTypeController) {
         Class demoClass = NSClassFromString(demo.name);
-        [self.navigationController pushViewController:[demoClass new] animated:YES];
+//        [[ControllerManageService sharedInstance].splitViewController showDetailViewController:[demoClass new] sender:self];
+        XXXXBaseNavigationController *navi = [[XXXXBaseNavigationController alloc] initWithRootViewController:[demoClass new]];
+        [[ControllerManageService sharedInstance].splitViewController showDetailViewController:navi sender:self];
+//        [self.navigationController pushViewController:[demoClass new] animated:YES];
         NSLog(@"Go to demo ==> %@", demo.displayName);
     }
     else {
@@ -193,7 +201,7 @@
                 }
 
                 [tableView beginUpdates];
-                [tableView deleteRowsAtIndexPaths:pathArr withRowAnimation:UITableViewRowAnimationBottom];
+                [tableView deleteRowsAtIndexPaths:pathArr withRowAnimation:UITableViewRowAnimationNone];
                 [tableView endUpdates];
             }
         }
@@ -206,11 +214,12 @@
                     [pathArr addObject:path];
                 }
                 [tableView beginUpdates];
-                [tableView insertRowsAtIndexPaths:pathArr withRowAnimation:UITableViewRowAnimationAutomatic];
+                [tableView insertRowsAtIndexPaths:pathArr withRowAnimation:UITableViewRowAnimationBottom];
                 [tableView endUpdates];
+//                [tableView reloadRowsAtIndexPaths:pathArr withRowAnimation:<#(UITableViewRowAnimation)#>];
             }
         }
-        [tableView reloadData];
+        
     }
 }
 

@@ -8,6 +8,7 @@
 
 #import "UIView+FlexLayout.h"
 #import <objc/runtime.h>
+#import <CoreText/CTFramesetter.h>
 
 @class XXXXDefaultLabel;
 
@@ -20,14 +21,10 @@
     return self;
 }
 
-+(instancetype)viewWithFlexSize:(CGSize)aSize{
++ (instancetype)viewWithFlexSize:(CGSize)aSize{
     return [[UIView alloc] initWithFlexSize:aSize];
 }
 
-
-//+(instancetype)viewWithFlexSize:(CGSize)aSize{
-//    UIView
-//}
 
 #define k_flex_layoutWidth @"k_flex_layoutWidth"
 - (CGFloat)flex_layoutWidth{
@@ -36,12 +33,21 @@
         return [obj floatValue];
     }
     
-    return [self calculateWidthWithContent];
+    return [self flex_estimateWidthWithContent];
 }
 
-- (CGFloat)calculateWidthWithContent{
+- (CGFloat)flex_estimateWidthWithContent {
     if ([self isKindOfClass:[UILabel class]]) {
         UILabel *selfLabel = (UILabel *)self;
+        
+        if (selfLabel.attributedText.length > 0) {
+            CGRect frame = [selfLabel.attributedText boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width, MAXFLOAT)
+                                                                  options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
+                                                                  context:nil];
+            
+            return CGRectGetWidth(frame);
+        }
+        
         CGRect labelSize = [selfLabel.text boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingTruncatesLastVisibleLine attributes:[NSDictionary dictionaryWithObjectsAndKeys:selfLabel.font,NSFontAttributeName, nil] context:nil];
         return ceil(labelSize.size.width + self.flex_textInsetHorizon * 2);
     }
@@ -72,20 +78,20 @@
         return [obj floatValue];
     }
     
-    return [self calculateHeightWithContent];
+    return [self flex_estimateHeightWithContent];
 }
 
-- (CGFloat)calculateHeightWithContent{
+- (CGFloat)flex_estimateHeightWithContent {
     if ([self isKindOfClass:[UILabel class]]) {
-        if ([((UILabel *)self) attributedText]) {
-            NSAttributedString *attrText = [((UILabel *)self) attributedText];
-            CGRect frame = [attrText boundingRectWithSize:CGSizeMake(self.flex_layoutWidth, MAXFLOAT)
-                                              options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
-                                              context:nil];
-            return CGRectGetHeight(frame);
+        UILabel *selfLabel = (UILabel *)self;
+        
+        if (selfLabel.attributedText.length > 0) {
+            CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef) selfLabel.attributedText);
+            CGSize fitSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, CFRangeMake(0, 0), NULL, CGSizeMake(self.flex_layoutWidth, MAXFLOAT), NULL);
+            CFRelease(framesetter);
+            return fitSize.height;
         }
         
-        UILabel *selfLabel = (UILabel *)self;
         CGRect labelSize = [selfLabel.text boundingRectWithSize:CGSizeMake([self flex_layoutWidth], [UIScreen mainScreen].bounds.size.height) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingTruncatesLastVisibleLine attributes:[NSDictionary dictionaryWithObjectsAndKeys:selfLabel.font,NSFontAttributeName, nil] context:nil];
         return ceil(labelSize.size.height + self.flex_textInsetVertical * 2);
     }
@@ -108,6 +114,19 @@
     objc_setAssociatedObject(self, k_flex_layoutHeigh, @(flex_layoutHeigh),
                              OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
+}
+
+#define k_flex_margin @"k_flex_margin"
+- (NSArray<NSNumber *> *)flex_margin{
+    NSArray<NSNumber *> *obj = objc_getAssociatedObject(self, k_flex_margin);
+    if (obj && [obj isKindOfClass:[NSArray class]]) {
+        return obj;
+    }
+    return nil;
+}
+- (void)setFlex_margin:(NSArray<NSNumber *> *)margin {
+    [self setFlexMargin:margin];
+    objc_setAssociatedObject(self, k_flex_margin, margin, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 #define k_flex_marginTop @"k_flex_marginTop"
@@ -276,49 +295,19 @@
     [self setFlex_marginBottom:marginBottom];
 }
 
-- (CGFloat)flex_estimateHeightByText:(NSString *)text{
-    if ([self isKindOfClass:[UILabel class]]) {
-        UILabel *selfLabel = (UILabel *)self;
-        CGRect labelSize = [text boundingRectWithSize:CGSizeMake([self flex_layoutWidth], [UIScreen mainScreen].bounds.size.height) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingTruncatesLastVisibleLine attributes:[NSDictionary dictionaryWithObjectsAndKeys:selfLabel.font,NSFontAttributeName, nil] context:nil];
-        return ceil(labelSize.size.height + self.flex_textInsetVertical * 2);
-    }
-    
-    if ([self isKindOfClass:[UIButton class]]) {
-        UIButton *selfLabel = (UIButton *)self;
-        CGRect labelSize = [text boundingRectWithSize:CGSizeMake([self flex_layoutWidth], [UIScreen mainScreen].bounds.size.height) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingTruncatesLastVisibleLine attributes:[NSDictionary dictionaryWithObjectsAndKeys:selfLabel.titleLabel.font,NSFontAttributeName, nil] context:nil];
-        return ceil(labelSize.size.height + self.flex_textInsetVertical * 2);
-    }
-    
-    return 0;
+- (CGFloat) flex_estimateTotalHeightWithContent{
+    return [self flex_estimateHeightWithContent] + self.flex_marginTop + self.flex_marginBottom;
 }
 
-- (CGFloat) flex_estimateTotalHeightByText:(NSString *)text{
-    return [self flex_estimateHeightByText:text] + self.flex_marginTop + self.flex_marginBottom;
-}
 
-- (CGFloat) flex_estimateWidthByText:(NSString *)text{
-    if ([self isKindOfClass:[UILabel class]]) {
-        UILabel *selfLabel = (UILabel *)self;
-        CGRect labelSize = [text boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingTruncatesLastVisibleLine attributes:[NSDictionary dictionaryWithObjectsAndKeys:selfLabel.font,NSFontAttributeName, nil] context:nil];
-        return ceil(labelSize.size.width + self.flex_textInsetHorizon * 2);
-    }
-    
-    if ([self isKindOfClass:[UIButton class]]) {
-        UIButton *selfLabel = (UIButton *)self;
-        CGRect labelSize = [text boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingTruncatesLastVisibleLine attributes:[NSDictionary dictionaryWithObjectsAndKeys:selfLabel.titleLabel.font,NSFontAttributeName, nil] context:nil];
-        return ceil(labelSize.size.width + self.flex_textInsetHorizon * 2);
-    }
-    
-    return 0;
-}
-
-- (CGFloat) flex_estimateTotalWidthByText:(NSString *)text{
-    return [self flex_estimateWidthByText:text] + self.flex_marginLeft + self.flex_marginRight;
+- (CGFloat) flex_estimateTotalWithContent{
+    return [self flex_estimateWidthWithContent] + self.flex_marginLeft + self.flex_marginRight;
 }
 
 - (void)flex_updateLayout {
     dispatch_main_sync_safe(^{
-        [self layoutSubviews];
+        [self setNeedsLayout];
+        [self layoutIfNeeded];
     });
 }
 

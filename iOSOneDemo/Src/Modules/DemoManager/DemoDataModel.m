@@ -12,13 +12,14 @@
 
 #pragma mark - < Init Methods >
 
-- (instancetype)initWithName:(NSString *)name displayName:(NSString *)disName parane:(NSString *)parentName type:(DemoType)type {
+- (instancetype)initWithName:(NSString *)name displayName:(NSString *)disName parane:(NSString *)parentName type:(DemoType)type priority:(DemoPriority)priority{
     if (self = [super init]) {
         _name = name;
         _displayName = disName;
         _parentName = parentName;
         _type = type;
         _demos = [NSMutableArray arrayWithCapacity:10];
+        _priority = priority;
         
         _isSpread = YES;
         _deep = 0;

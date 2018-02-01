@@ -11,6 +11,7 @@
 @interface DemoMDController : XXXXBaseViewController
 
 @property (nonatomic, copy) NSString *demoName;
+@property (nonatomic, copy) NSString *demoDesName;
 
 @end
 
