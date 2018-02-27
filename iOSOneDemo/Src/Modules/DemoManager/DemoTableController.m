@@ -49,15 +49,16 @@
 
 #pragma mark - < Init Methods >
 
+
+- (void)initEnvironment {
+    _isAllSpread = YES;
+}
+
 - (void)initWindow {
     self.title = @"iOS一个Demo就够了";
     
-    UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc] initWithTitle:@"展开" style:UIBarButtonItemStylePlain target:self action:@selector(onRightBarItemClicked:)];
+    UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc] initWithTitle:(_isAllSpread)? @"全收起": @"全展开" style:UIBarButtonItemStylePlain target:self action:@selector(onRightBarItemClicked:)];
     self.navigationItem.rightBarButtonItem = rightBarItem;
-}
-
-- (void)initEnvironment {
-    _isAllSpread = NO;
 }
 
 - (void)initUI {
@@ -76,6 +77,9 @@
 
 - (void)initDataSource {
     self.dataSource = [[DemoManager sharedManager] exportDemos];
+    for (DemoDataModel *demo in self.dataSource) {
+        [self setAllSubDemoOfDemo:demo spread:_isAllSpread];
+    }
 }
 
 
@@ -84,20 +88,26 @@
 
 #pragma mark - < Main Logic >
 
-- (void)onRightBarItemClicked:(id)sender {
+- (void)onRightBarItemClicked:(id)sender
+{
     _isAllSpread = !_isAllSpread;
     for (DemoDataModel *demo in self.dataSource) {
-        demo.isSpread = _isAllSpread;
-        if (demo.spreadDemosCount > 0) {
-            for (DemoDataModel *subDemo in demo.spreadDemos) {
-                subDemo.isSpread = _isAllSpread;
-            }
-        }
+        [self setAllSubDemoOfDemo:demo spread:_isAllSpread];
     }
     
-    self.navigationItem.rightBarButtonItem.title = (_isAllSpread)? @"收起": @"展开";
+    self.navigationItem.rightBarButtonItem.title = (_isAllSpread)? @"全收起": @"全展开";
     
     [_tableView reloadData];
+}
+
+- (void)setAllSubDemoOfDemo:(DemoDataModel *)demo spread:(BOOL)isSpread
+{
+    demo.isSpread = isSpread;
+    if (demo.spreadDemosCount > 0) {
+        for (DemoDataModel *subDemo in demo.spreadDemos) {
+            [self setAllSubDemoOfDemo:subDemo spread:isSpread];
+        }
+    }
 }
 
 
@@ -127,13 +137,15 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.accessoryType = UITableViewCellAccessoryNone;
         cell.contentView.backgroundColor = kAppColor.demoCategoryBg;
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ %@",(demo.isSpread)?@"-":@"+",demo.displayName];
     }
     else {
         cell.selectionStyle = UITableViewCellSelectionStyleDefault;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.contentView.backgroundColor = kAppColor.demoControllerBg;
+        cell.textLabel.text = demo.displayName;
     }
-    cell.textLabel.text = demo.displayName;
+    
 
     return cell;
 }
@@ -152,7 +164,8 @@
     
     XXXXLabel *label = [XXXXLabel labelWithType:XXXXLabelTypeDefault];
     label.frame = CGRectMake(20, 0, kAppDimension.screenWidth, 44);
-    [label setText:_dataSource[section].displayName
+    NSString *title = [NSString stringWithFormat:@"%@ %@",(_dataSource[section].isSpread)?@"-":@"+",_dataSource[section].displayName];
+    [label setText:title
               font:kAppFont.h4 color:kAppColor.h1];
     label.textAlignment = NSTextAlignmentLeft;
     [view addSubview:label];
@@ -203,6 +216,9 @@
                 [tableView beginUpdates];
                 [tableView deleteRowsAtIndexPaths:pathArr withRowAnimation:UITableViewRowAnimationNone];
                 [tableView endUpdates];
+                
+                NSIndexPath *path =[NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section];
+                [tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationNone];
             }
         }
         else {
@@ -216,7 +232,9 @@
                 [tableView beginUpdates];
                 [tableView insertRowsAtIndexPaths:pathArr withRowAnimation:UITableViewRowAnimationBottom];
                 [tableView endUpdates];
-//                [tableView reloadRowsAtIndexPaths:pathArr withRowAnimation:<#(UITableViewRowAnimation)#>];
+                
+                NSIndexPath *path =[NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section];
+                [tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationNone];
             }
         }
         

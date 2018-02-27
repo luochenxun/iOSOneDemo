@@ -25,29 +25,31 @@
 
 #pragma mark - < Life circle >
 
-+ (instancetype)LayoutWithFrame:(CGRect)frame direction:(FlexDirection)direction justityContent:(FlexJustityContent)content alignItems:(FlexAlignItems)align{
-    FlexScrollLayout * layout = [[FlexScrollLayout alloc] initWithFrame:frame];
-    layout.flexDirection = direction;
-    layout.justityContent = content;
-    layout.alignItems = align;
++ (instancetype)LayoutWithFrame:(CGRect)frame direction:(FlexDirection)direction justityContent:(FlexJustityContent)content alignItems:(FlexAlignItems)align
+{
+    FlexScrollLayout * layout = [[FlexScrollLayout alloc] initWithDirection:direction justityContent:content alignItems:align];
     return layout;
 }
 
-+ (instancetype)LayoutWithDirection:(FlexDirection)direction justityContent:(FlexJustityContent)content alignItems:(FlexAlignItems)align{
++ (instancetype)LayoutWithDirection:(FlexDirection)direction justityContent:(FlexJustityContent)content alignItems:(FlexAlignItems)align
+{
     return [FlexScrollLayout LayoutWithFrame:CGRectZero direction:direction justityContent:content alignItems:align];
 }
 
-- (instancetype)initWithDirection:(FlexDirection)direction justityContent:(FlexJustityContent)content alignItems:(FlexAlignItems)align{
+- (instancetype)initWithDirection:(FlexDirection)direction justityContent:(FlexJustityContent)content alignItems:(FlexAlignItems)align
+{
     if ( self = [super initWithFrame:CGRectZero] ) {
-        self.flexDirection = direction;
-        self.justityContent = content;
-        self.alignItems = align;
-
+        _concreteLayout = [FlexLayout new];
+        _concreteLayout.delegateView = self;
+        _concreteLayout.flexDirection = direction;
+        _concreteLayout.justityContent = content;
+        _concreteLayout.alignItems = align;
     }
     return self;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame{
+- (instancetype)initWithFrame:(CGRect)frame
+{
     if ( self = [super initWithFrame:frame] ) {
         self.scrollEnabled = YES;
         self.showsVerticalScrollIndicator = NO;
@@ -60,25 +62,29 @@
     return self;
 }
 
-- (instancetype)init {
+- (instancetype)init
+{
     if (self = [super initWithFrame:CGRectZero]) {
         
     }
     return self;
 }
 
-- (void)dealloc{
+- (void)dealloc
+{
     [self.flex_subViews removeAllObjects];
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
     if (!_isClickable) {
         UIView *parentView = self.superview;
         [parentView touchesBegan:touches withEvent:event];
     }
 }
 
-- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
     if (!_isClickable) {
         UIView *parentView = self.superview;
         [parentView touchesEnded:touches withEvent:event];
@@ -87,201 +93,53 @@
 
 #pragma mark - < Interface >
 
-- (void)layoutSubviews {
-//    NSLog(@"[Flex] , call layoutSubViews %@", self);
+- (void)flex_updateLayout
+{
+    //    NSLog(@"[FlexLayout] call layoutSubViews %@", self);
     
     // param check
     if ([self.flex_subViews count] <= 0) {
         return;
     }
     
-    // layout subLayout
-    for (UIView *viewItem in self.flex_subViews) {
-        if ([viewItem isKindOfClass:[FlexScrollLayout class]]) {
-            [(FlexScrollLayout *)viewItem layoutSubviews];
-        }
+    if (self.flexDirection == FlexDirection_row) {
+        [self _layoutRow];
+    } else {
+        [self _layoutColumn];
     }
     
 #pragma mark testMode
     // testMode
-    if (_isTestMode) {
+    if (self.isTestMode) {
         for (UIView *viewItem in self.flex_subViews) {
-            if ([viewItem isKindOfClass:[FlexScrollLayout class]]) {
-                ((FlexScrollLayout *)viewItem).isTestMode = YES;
-            }
-            viewItem.backgroundColor = XXXX_RANDOM_COLOR();
-        }
-    }
-    
-    if (_flexDirection == FlexDirection_row) {
-        [self _layoutRow];
-    }else {
-        [self _layoutColumn];
-    }
-}
-
-- (void)adjustLayoutSizeBySubviews{
-    [self adjustLayoutHeightBySubviews];
-    [self adjustLayoutWidthBySubviews];
-}
-
-- (void)adjustLayoutHeightBySubviews{
-    CGFloat heightOfLayout = 0;
-    // If the direction of the layout is row , use the most-height-one's height as the layout's height
-    if (_flexDirection == FlexDirection_row) {
-        for (UIView *subview in self.flex_subViews) {
-            // skip the hidden-view
-            if (subview.hidden == YES) {
-                continue;
+            if ([FlexLayout isFlexLayout:viewItem]) {
+                [viewItem setValue:@YES forKey:@"isTestMode"];
             }
             
-            if (subview.flex_totalHeigh > heightOfLayout) {
-                heightOfLayout = subview.flex_totalHeigh;
-            }
         }
+        self.backgroundColor = XXXX_RANDOM_COLOR();
     }
-    // If the direction of the layout is column , add up all the subview's height as the layout's height
-    else {
-        for (UIView *subview in self.flex_subViews) {
-            // skip the hidden-view
-            if (subview.hidden == YES) {
-                continue;
-            }
-            
-            heightOfLayout += subview.flex_totalHeigh;
+    
+    // layout subLayout
+    for (UIView *viewItem in self.flex_subViews) {
+        if ([FlexLayout isFlexLayout:viewItem] && [viewItem respondsToSelector:@selector(flex_updateLayout)]) {
+            [viewItem performSelector:@selector(flex_updateLayout)];
         }
     }
     
-    CGRect frame = self.frame;
-    frame.size.height = [self isLine:heightOfLayout] ? XXXX_SIZE_LINE : roundf(heightOfLayout);
-    self.frame = frame;
-    
-    self.flex_layoutHeigh = [self isLine:heightOfLayout] ? XXXX_SIZE_LINE : roundf(heightOfLayout);
-}
-
-- (void)adjustLayoutWidthBySubviews{
-    CGFloat widthOfLayout = 0;
-    // If the direction of the layout is column , use the most-height-one's height as the layout's height
-    if (_flexDirection == FlexDirection_column) {
-        for (UIView *subview in self.flex_subViews) {
-            // skip the hidden-view
-            if (subview.hidden == YES) {
-                continue;
-            }
-            
-            if (subview.flex_totalWidth > widthOfLayout) {
-                widthOfLayout = subview.flex_totalWidth;
-            }
-        }
+    // update contentSize of the scrollLayout
+    if (_spacePadding != 0 && self.justityContent == FlexJustityContent_spaceBetween) {
+        self.contentSize = CGSizeMake(self.layoutWidth, _y - _spacePadding);
+    } else if (_spacePadding != 0 && self.justityContent == FlexJustityContent_spaceAround) {
+        self.contentSize = CGSizeMake(self.layoutWidth, _y - _spacePadding);
+    } else {
+        self.contentSize = CGSizeMake(self.layoutWidth, _y + self.paddingBottom);
     }
-    // If the direction of the layout is row , add up all the subview's height as the layout's height
-    else {
-        for (UIView *subview in self.flex_subViews) {
-            // skip the hidden-view
-            if (subview.hidden == YES) {
-                continue;
-            }
-            
-            widthOfLayout += subview.flex_totalWidth;
-        }
-    }
-    
-    CGRect frame = self.frame;
-    frame.size.width = [self isLine:widthOfLayout] ? XXXX_SIZE_LINE : roundf(widthOfLayout);
-    self.frame = frame;
-    
-    self.flex_layoutWidth = [self isLine:widthOfLayout] ? XXXX_SIZE_LINE : roundf(widthOfLayout);
 }
 
 - (void)attachView:(UIView *)parentView {
     self.frame = parentView.bounds;
     [parentView addSubview:self];
-}
-
-- (void)flex_addSubview:(UIView *)view{
-    [self.flex_subViews addObject:view];
-    [self addSubview:view];
-    
-    if (!_isClickable && [view isKindOfClass:[FlexScrollLayout class]]) {
-        ((FlexScrollLayout *)view).isClickable = NO;
-    }
-}
-
-- (void)flex_insertSubView:(UIView *)view atIndex:(NSInteger)index{
-    [self.flex_subViews insertObject:view atIndex:index];
-    [self insertSubview:view atIndex:index];
-    
-    if (!_isClickable && [view isKindOfClass:[FlexScrollLayout class]]) {
-        ((FlexScrollLayout *)view).isClickable = NO;
-    }
-}
-
-- (void)flex_insertSubView:(UIView *)view aboveSubview:(UIView *)subview{
-    NSInteger subViewIndex = [self.flex_subViews indexOfObject:subview];
-    if (subViewIndex < 0 || subViewIndex > self.flex_subViews.count - 1) {
-        return [self flex_addSubview:view];
-    }
-    [self.flex_subViews insertObject:view atIndex:subViewIndex];
-    [self insertSubview:view aboveSubview:subview];
-}
-
-- (void)flex_insertSubView:(UIView *)view belowSubview:(UIView *)subview{
-    NSInteger subViewIndex = [self.flex_subViews indexOfObject:subview];
-    subViewIndex ++;
-    if (subViewIndex < 0 || subViewIndex > self.flex_subViews.count - 1) {
-        return [self flex_addSubview:view];
-    }
-    [self.flex_subViews insertObject:view atIndex:subViewIndex];
-    [self insertSubview:view belowSubview:subview];
-}
-
-- (void)flex_removeSubview:(UIView *)subView{
-    [self.flex_subViews removeObject:subView];
-    [subView removeFromSuperview];
-}
-
-- (void)flex_removeSubviewAtIndex:(NSInteger)index{
-    UIView *subview = [self.flex_subViews objectAtIndex:index];
-    [self flex_removeSubview:subview];
-}
-
-- (void)flex_clearSubviews{
-    for (NSInteger i = self.flex_subViews.count - 1 ; i >= 0 ; i -- ) {
-        UIView *subView = self.flex_subViews[i];
-        [self flex_removeSubview:subView];
-    }
-}
-
-- (void)setPaddingTop:(CGFloat)paddingTop left:(CGFloat)paddingLeft right:(CGFloat)paddingRight bottom:(CGFloat)paddingBottom{
-    self.paddingLeft = paddingLeft;
-    self.paddingTop = paddingTop;
-    self.paddingRight = paddingRight;
-    self.paddingBottom = paddingBottom;
-}
-
-- (void)setPadding:(NSArray<NSNumber *> *)padding {
-    // param check
-    if (!padding || padding.count < 1) {
-        return ;
-    }
-    
-    if (padding.count == 1) {
-        CGFloat paddingF = [padding[0] floatValue];
-        [self setPaddingTop:paddingF left:paddingF right:paddingF bottom:paddingF];
-    }
-    
-    if (padding.count == 2) {
-        CGFloat paddingHorizon = [padding[0] floatValue];
-        CGFloat paddingVertical = [padding[1] floatValue];
-        [self setPaddingTop:paddingVertical left:paddingHorizon right:paddingHorizon bottom:paddingVertical];
-    }
-    
-    if (padding.count == 4) {
-        self.paddingLeft = [padding[0] floatValue];
-        self.paddingTop = [padding[1] floatValue];
-        self.paddingRight = [padding[2] floatValue];
-        self.paddingBottom = [padding[3] floatValue];
-    }
 }
 
 - (void)setIsClickable:(BOOL)isClickable{
@@ -364,7 +222,7 @@
         
         // Adjust by AlignItems
 #pragma mark Adjust by AlignItems<row>
-        switch (_alignItems) {
+        switch (self.alignItems) {
             case FlexAlignItems_flexStart: {
                 top = _y + viewItem.flex_marginTop;
                 break;
@@ -433,10 +291,13 @@
         
         
         // set frame finally
-        width = [self isLine:width] ? XXXX_SIZE_LINE : width;
-        heigh = [self isLine:heigh] ? XXXX_SIZE_LINE : heigh;
+        width = [FlexLayout isLinePx:width] ? XXXX_SIZE_LINE : width;
+        heigh = [FlexLayout isLinePx:heigh] ? XXXX_SIZE_LINE : heigh;
         viewItem.frame = CGRectMake(roundf(left), roundf(top), width, heigh);
         
+        if ([viewItem isKindOfClass:[UILabel class]]) {
+            [viewItem sizeToFit];
+        }
     }
     
     if (_spacePadding != 0 && self.justityContent == FlexJustityContent_spaceBetween) {
@@ -501,7 +362,6 @@
     
     // walk and layout the subViews
     for (UIView *viewItem in self.flex_subViews) {
-        
         if (viewItem.hidden) {
             continue;
         }
@@ -515,7 +375,7 @@
         
         // Adjust by AlignItems
 #pragma mark Adjust by AlignItems<Column>
-        switch (_alignItems) {
+        switch (self.alignItems) {
             case FlexAlignItems_flexStart: {
                 left = _x + viewItem.flex_marginLeft;
                 break;
@@ -560,6 +420,28 @@
             }
         }
         
+        // --- Update the rootLayout when it has a subView that need to be render twice
+        // optimize toward label
+        if ([viewItem isKindOfClass:[UILabel class]]) {
+            CGFloat viewItemTempWidth = viewItem.flex_layoutWidth;
+            viewItem.flex_layoutWidth = width;
+            heigh = viewItem.flex_layoutHeigh;
+            // 更新父容器
+            if (roundf(viewItemTempWidth) != roundf(width)) {
+                [FlexLayout updateRootLayout:viewItem];
+                return;
+            }
+        }
+        
+        // adjust flexLayout's size
+        if ([FlexLayout isFlexLayout:viewItem] && width == 0) {
+            width = [(FlexLayout *)[viewItem valueForKey:@"concreteLayout"] estimateLayoutWidthBySubviews];
+        }
+        if ([FlexLayout isFlexLayout:viewItem] && heigh == 0) {
+            heigh = [(FlexLayout *)[viewItem valueForKey:@"concreteLayout"] estimateLayoutHeightBySubviews];
+            _y += heigh;
+        }
+        
         // Adjust by JustityContent-spacePadding
 #pragma mark Adjust by JustityContent-spacePadding<Column>
         if (_spacePadding != 0 && self.justityContent == FlexJustityContent_spaceBetween) {
@@ -583,66 +465,227 @@
         }
         
         // set frame finally
-        width = [self isLine:width] ? XXXX_SIZE_LINE : width;
-        heigh = [self isLine:heigh] ? XXXX_SIZE_LINE : heigh;
+        width = [FlexLayout isLinePx:width] ? XXXX_SIZE_LINE : width;
+        heigh = [FlexLayout isLinePx:heigh] ? XXXX_SIZE_LINE : heigh;
         viewItem.frame = CGRectMake(roundf(left), roundf(top), width, heigh);
-    }
-    
-    if (_spacePadding != 0 && self.justityContent == FlexJustityContent_spaceBetween) {
-        self.contentSize = CGSizeMake(self.layoutWidth, _y - _spacePadding);
-    }else if (_spacePadding != 0 && self.justityContent == FlexJustityContent_spaceAround) {
-        self.contentSize = CGSizeMake(self.layoutWidth, _y - _spacePadding);
-    }else {
-        self.contentSize = CGSizeMake(self.layoutWidth, _y + self.paddingBottom);
+        
+        if ([viewItem isKindOfClass:[UILabel class]]) {
+            [viewItem sizeToFit];
+        }
     }
 }
 
-- (BOOL)isLine: (CGFloat) length{
-    if (length > 0.3 && length < 0.6) {
-        return YES;
-    }
-    return NO;
-}
 
-
-#pragma mark - < Lazy initialize & Getter/Setter >
+#pragma mark - < FlexLayout agent methods >
 
 - (NSMutableArray<UIView *> *)flex_subViews{
-    if (!_flex_subViews) {
-        _flex_subViews = [NSMutableArray arrayWithCapacity:10];
+    return _concreteLayout.flex_subViews;
+}
+
+- (FlexDirection)flexDirection
+{
+    return _concreteLayout.flexDirection;
+}
+
+- (void)setFlexDirection:(FlexDirection)flexDirection
+{
+    _concreteLayout.flexDirection = flexDirection;
+}
+
+- (FlexJustityContent)justityContent
+{
+    return _concreteLayout.justityContent;
+}
+
+- (void)setJustityContent:(FlexJustityContent)justityContent
+{
+    _concreteLayout.justityContent = justityContent;
+}
+
+- (FlexAlignItems)alignItems
+{
+    return _concreteLayout.alignItems;
+}
+
+- (void)setAlignItems:(FlexAlignItems)alignItems
+{
+    _concreteLayout.alignItems = alignItems;
+}
+
+
+- (CGFloat)paddingTop
+{
+    return _concreteLayout.paddingTop;
+}
+
+- (void)setPaddingTop:(CGFloat)paddingTop
+{
+    _concreteLayout.paddingTop = paddingTop;
+}
+
+- (CGFloat)paddingLeft
+{
+    return _concreteLayout.paddingLeft;
+}
+
+- (void)setPaddingLeft:(CGFloat)paddingLeft
+{
+    _concreteLayout.paddingLeft = paddingLeft;
+}
+
+- (CGFloat)paddingRight
+{
+    return _concreteLayout.paddingRight;
+}
+
+- (void)setPaddingRight:(CGFloat)paddingRight
+{
+    _concreteLayout.paddingRight = paddingRight;
+}
+
+- (CGFloat)paddingBottom
+{
+    return _concreteLayout.paddingBottom;
+}
+
+- (void)setPaddingBottom:(CGFloat)paddingBottom
+{
+    _concreteLayout.paddingBottom = paddingBottom;
+}
+
+- (void)setPaddingTop:(CGFloat)paddingTop left:(CGFloat)paddingLeft right:(CGFloat)paddingRight bottom:(CGFloat)paddingBottom
+{
+    self.paddingLeft = paddingLeft;
+    self.paddingTop = paddingTop;
+    self.paddingRight = paddingRight;
+    self.paddingBottom = paddingBottom;
+}
+
+- (void)setPadding:(NSArray<NSNumber *> *)padding {
+    // param check
+    if (!padding || padding.count < 1) {
+        return ;
     }
-    return _flex_subViews;
+    
+    if (padding.count == 1) {
+        CGFloat paddingF = [padding[0] floatValue];
+        [self setPaddingTop:paddingF left:paddingF right:paddingF bottom:paddingF];
+    }
+    
+    if (padding.count == 2) {
+        CGFloat paddingHorizon = [padding[0] floatValue];
+        CGFloat paddingVertical = [padding[1] floatValue];
+        [self setPaddingTop:paddingVertical left:paddingHorizon right:paddingHorizon bottom:paddingVertical];
+    }
+    
+    if (padding.count == 4) {
+        self.paddingLeft = [padding[0] floatValue];
+        self.paddingTop = [padding[1] floatValue];
+        self.paddingRight = [padding[2] floatValue];
+        self.paddingBottom = [padding[3] floatValue];
+    }
 }
 
-- (void)setIsScrollable:(BOOL)isScrollable{
-    _isScrollable = isScrollable;
-    self.scrollEnabled = isScrollable;
+- (BOOL)isTestMode
+{
+    return _concreteLayout.isTestMode;
 }
 
-- (CGFloat)layoutWidth {
-    return self.frame.size.width;
+- (void)setIsTestMode:(BOOL)isTestMode
+{
+    _concreteLayout.isTestMode = isTestMode;
 }
 
-- (CGFloat)layoutHeigh {
-    return self.frame.size.height;
+
+- (void)adjustLayoutSizeBySubviews
+{
+    [_concreteLayout adjustLayoutSizeBySubviews];
 }
 
-- (void)setFlexDirection:(FlexDirection)flexDirection{
-    _flexDirection = flexDirection;
-    [self layoutSubviews];
+- (void)adjustLayoutHeightBySubviews
+{
+    [_concreteLayout adjustLayoutHeightBySubviews];
 }
 
-- (void)setJustityContent:(FlexJustityContent)justityContent{
-    _justityContent = justityContent;
-    [self layoutSubviews];
+- (CGFloat)estimateLayoutHeightBySubviews
+{
+    return [_concreteLayout estimateLayoutHeightBySubviews];
 }
 
-- (void)setAlignItems:(FlexAlignItems)alignItems{
-    _alignItems = alignItems;
-    [self layoutSubviews];
+- (void)adjustLayoutWidthBySubviews
+{
+    [_concreteLayout adjustLayoutWidthBySubviews];
 }
+
+- (CGFloat)estimateLayoutWidthBySubviews
+{
+    return [_concreteLayout estimateLayoutWidthBySubviews];
+}
+
+- (void)flex_addSubview:(UIView *)view
+{
+    [_concreteLayout flex_addSubview:view];
+}
+
+- (void)flex_insertSubView:(UIView *)view atIndex:(NSInteger)index
+{
+    [_concreteLayout flex_insertSubView:view atIndex:index];
+}
+
+- (void)flex_insertSubView:(UIView *)view aboveSubview:(UIView *)subview
+{
+    [_concreteLayout flex_insertSubView:view aboveSubview:subview];
+}
+
+- (void)flex_insertSubView:(UIView *)view belowSubview:(UIView *)subview
+{
+    [_concreteLayout flex_insertSubView:view belowSubview:subview];
+}
+
+- (void)flex_removeSubview:(UIView *)subView
+{
+    [_concreteLayout flex_removeSubview:subView];
+}
+
+- (void)flex_removeSubviewAtIndex:(NSInteger)index
+{
+    [_concreteLayout flex_removeSubviewAtIndex:index];
+}
+
+- (void)flex_clearSubviews
+{
+    [_concreteLayout flex_clearSubviews];
+}
+
 
 #pragma mark - < Private methods >
+
+
+- (CGFloat)layoutHeigh
+{
+    if (self.flex_layoutHeigh > 0) {
+        return self.flex_layoutHeigh;
+    }
+    else if (self.frame.size.height > 0) {
+        return self.frame.size.height;
+    }
+    else {
+        return [self estimateLayoutHeightBySubviews];
+    }
+}
+
+- (CGFloat)layoutWidth
+{
+    if (self.flex_layoutWidth > 0) {
+        return self.flex_layoutWidth;
+    }
+    else if (self.frame.size.width > 0) {
+        return self.frame.size.width;
+    }
+    else {
+        return [self estimateLayoutWidthBySubviews];
+    }
+}
 
 - (CGFloat)_subViewsTotalWidth{
     CGFloat totalWidth = 0;

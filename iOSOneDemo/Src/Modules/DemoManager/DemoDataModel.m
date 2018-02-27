@@ -21,7 +21,7 @@
         _demos = [NSMutableArray arrayWithCapacity:10];
         _priority = priority;
         
-        _isSpread = YES;
+        _isSpread = NO;
         _deep = 0;
     }
     return self;

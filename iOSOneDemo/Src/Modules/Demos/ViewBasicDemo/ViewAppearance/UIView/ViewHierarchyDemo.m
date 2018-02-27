@@ -56,10 +56,8 @@
 }
 
 - (void)initUI {
-    FlexLinearLayout *showBox = [self addDemoBoxWithTitle:@"展示View层叠"];
-//    showBox.justityContent = FlexJustityContent_center;
+    FlexLinearLayout *showBox = [self addDemoBoxWithTitle:@"View层次关系示例"];
     showBox.alignItems = FlexAlignSelf_center;
-    showBox.flex_layoutHeigh = 400;
     
     UIView *view1 = [UIView new];
     view1.flex_layoutHeigh = 100;
@@ -86,13 +84,40 @@
     [self addLabelOnView:view4 withText:@"view4" color:[UIColor whiteColor]];
     [view2 addSubview:view4];
     
-    [self addDividerOnView:showBox withMargin:@[@15,@60,@0,@15]];
+    [self addDividerOnView:showBox withMargin:@[@15,@60,@15,@0]];
     [self addDescriptionOnView:showBox withText:@"在上面的示例中，View2是View1的subview，View3、View4是View2的subview。"];
     [self addButtonOnView:showBox withText:@"隐藏/显示view2" block:^(id btn) {
         view2.hidden = !view2.isHidden;
     }];
     
-    [showBox adjustLayoutHeightBySubviews];
+    [self addButtonOnView:showBox withText:@"toggle view2 clipsToBounds" block:^(id btn) {
+        view2.clipsToBounds = !view2.clipsToBounds;
+    }];
+    
+    [self addButtonOnView:showBox withText:@"修改View3的order到最上层" block:^(id btn) {
+        [view2 bringSubviewToFront:view3];
+    }];
+    
+    [self addButtonOnView:showBox withText:@"修改View4的order到最上层" block:^(id btn) {
+        [view2 bringSubviewToFront:view4];
+    }];
+    
+    [self addButtonOnView:showBox withText:@"修改View2的透明度" block:^(id btn) {
+        view2.alpha = (view2.alpha <= 0.5)? 1: 0.5;
+    }];
+    
+    [self addButtonOnView:showBox withText:@"修改View3的透明度" block:^(id btn) {
+        view3.alpha = (view3.alpha <= 0.5)? 1: 0.5;
+    }];
+    
+    [self addButtonOnView:showBox withText:@"修改View1的frame" block:^(id btn) {
+        CGRect frame1 = view1.frame;
+        frame1.size.width = (frame1.size.width / 2);
+        frame1.size.height = (frame1.size.height / 2);
+        frame1.origin.x += 50;
+        view1.frame = frame1;
+    }];
+    
     [self.outerBox flex_updateLayout];
 }
 

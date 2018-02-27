@@ -38,29 +38,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self registerPushNotification:application];
+    [self registerNotificationActions];
     
     return YES;
-}
-
-- (void)registerPushNotification:(UIApplication *)application
-{
-    if ([[UIDevice currentDevice].systemVersion floatValue] >= 10.0) { // in iOS10
-        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-        center.delegate = self;  // 必须写代理，不然无法监听通知的接收与点击（此delegate要在application:didFinishLaunchingWithOptions:里赋值）
-        [center requestAuthorizationWithOptions:(UNAuthorizationOptionAlert | UNAuthorizationOptionBadge | UNAuthorizationOptionSound) completionHandler:^(BOOL granted, NSError * _Nullable error) {
-            if (granted) { // Agree
-                NSLog(@"[UserNotification] Agree Push Notification");
-                [center getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings * _Nonnull settings) {
-                    NSLog(@"[UserNotification]  %@", settings);
-                }];
-            } else { // UnAgree
-                NSLog(@"[UserNotification] UnAgree Push Notification");
-            }
-        }];
-    } else if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0){ // iOS8 - iOS10
-        [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeSound | UIUserNotificationTypeBadge categories:nil]];
-    }
-    [application registerForRemoteNotifications];
 }
 
 // 本地 Token
@@ -89,6 +69,45 @@
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
     NSLog(@"[UserNotification] Fail To Register For Remote Notifications With Error: %@", error);
+}
+
+
+#pragma mark [ 注册主方法 ]
+
+- (void)registerPushNotification:(UIApplication *)application
+{
+    if ([[UIDevice currentDevice].systemVersion floatValue] >= 10.0) { // in iOS10
+        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+        center.delegate = self;  // 必须写代理，不然无法监听通知的接收与点击（此delegate要在application:didFinishLaunchingWithOptions:里赋值）
+        [center requestAuthorizationWithOptions:(UNAuthorizationOptionAlert | UNAuthorizationOptionBadge | UNAuthorizationOptionSound) completionHandler:^(BOOL granted, NSError * _Nullable error) {
+            if (granted) { // Agree
+                NSLog(@"[UserNotification] Agree Push Notification");
+                [center getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings * _Nonnull settings) {
+                    NSLog(@"[UserNotification]  %@", settings);
+                }];
+            } else { // UnAgree
+                NSLog(@"[UserNotification] UnAgree Push Notification");
+            }
+        }];
+    } else if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0){ // iOS8 - iOS10
+        [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeSound | UIUserNotificationTypeBadge categories:nil]];
+    }
+    [application registerForRemoteNotifications];
+}
+
+- (void)registerNotificationActions
+{
+    // ----- 普通Action -----
+    // 1. 创建 Action
+    UNNotificationAction *action = [UNNotificationAction actionWithIdentifier:@"action-test" title:@"test" options:UNNotificationActionOptionNone];
+    UNNotificationAction *authAction = [UNNotificationAction actionWithIdentifier:@"action-auth" title:@"auth-require" options:UNNotificationActionOptionAuthenticationRequired];
+    UNNotificationAction *desAction = [UNNotificationAction actionWithIdentifier:@"action-des" title:@"destructive" options:UNNotificationActionOptionDestructive];
+    UNNotificationAction *foreAction = [UNNotificationAction actionWithIdentifier:@"action-fore" title:@"foreground" options:UNNotificationActionOptionForeground];
+    // 2. 创建 category
+    UNNotificationCategory *category = [UNNotificationCategory categoryWithIdentifier:@"test" actions:@[action, authAction, desAction, foreAction] intentIdentifiers:@[] options:UNNotificationCategoryOptionNone];
+    // 3. 把 category 添加到通知中心
+    [[UNUserNotificationCenter currentNotificationCenter] setNotificationCategories:[NSSet setWithArray:@[category]]];
+    
 }
 
 
@@ -137,12 +156,23 @@
     NSString *subtitle = content.subtitle;  // 推送消息的副标题
     NSString *title = content.title;  // 推送消息的标题
     
+    // Simple log
     if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         NSLog(@"iOS10 点击远程通知:%@", userInfo);
         
     } else {
         // 判断为本地通知
         NSLog(@"iOS10 点击本地通知:{\\\\nbody:%@，\\\\ntitle:%@,\\\\nsubtitle:%@,\\\\nbadge：%@，\\\\nsound：%@，\\\\nuserInfo：%@\\\\n}",body, title, subtitle, badge, sound, userInfo);
+    }
+    
+    // 处理Action
+    NSString *categoryIdentifier = response.notification.request.content.categoryIdentifier;
+    if ([categoryIdentifier isEqualToString:@"test"]) { //识别需要被处理的拓展
+        if ([response.actionIdentifier isEqualToString:@"action-test"]) { //识别用户点击的是哪个 action
+            UNTextInputNotificationResponse *textResponse = (UNTextInputNotificationResponse *)response;
+            NSString *msg = textResponse.userText;
+            NSLog(@"test action %@", msg);
+        }
     }
     
     completionHandler();  // 系统要求执行这个方法
@@ -162,6 +192,7 @@
 {
     NSLog(@"[UserNotification] Received push notification: %@", notification);
 }
+
 
 
 

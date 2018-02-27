@@ -8,13 +8,14 @@
 #import <UIKit/UIKit.h>
 #import "UIView+FlexLayout.h"
 
+@class FlexLayout;
+
 @interface FlexScrollLayout : UIScrollView
 
 
 #pragma mark - < Interface Members >
 
-@property(nonatomic, strong) NSMutableArray<UIView *> *flex_subViews;
-
+@property(nonatomic, strong) FlexLayout *concreteLayout;
 
 @property(nonatomic, assign) FlexDirection flexDirection;
 @property(nonatomic, assign) FlexJustityContent justityContent;
@@ -56,6 +57,13 @@
 - (void)attachView:(UIView *)parentView;
 
 /**
+ *  Update the layout of all flex_subviews
+ *  <p>
+ *  更新Layout容器内的所有子View
+ */
+- (void)flex_updateLayout;
+
+/**
  *  adjust the size of the layout by its flex_subviews
  */
 - (void)adjustLayoutSizeBySubviews;
@@ -64,6 +72,19 @@
 /**  adjust the width of the layout by its flex_subviews */
 - (void)adjustLayoutWidthBySubviews;
 
+/**
+ *  estimate the width of the layout by its flex_subviews
+ *  <p>
+ *  根据Layout的子View估算Layout的宽
+ */
+- (CGFloat)estimateLayoutWidthBySubviews;
+
+/**
+ *  estimate the height of the layout by its flex_subviews
+ *  <p>
+ *  根据Layout的子View估算Layout的高
+ */
+- (CGFloat)estimateLayoutHeightBySubviews;
 
 /**
  *  Add a subView in the layout. Use this method to replace the addSubview method

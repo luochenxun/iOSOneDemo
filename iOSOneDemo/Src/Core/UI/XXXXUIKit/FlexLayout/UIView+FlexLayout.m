@@ -82,16 +82,16 @@
 }
 
 - (CGFloat)flex_estimateHeightWithContent {
-    if ([self isKindOfClass:[UILabel class]]) {
-        UILabel *selfLabel = (UILabel *)self;
-        
-        if (selfLabel.attributedText.length > 0) {
-            CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef) selfLabel.attributedText);
-            CGSize fitSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, CFRangeMake(0, 0), NULL, CGSizeMake(self.flex_layoutWidth, MAXFLOAT), NULL);
-            CFRelease(framesetter);
-            return fitSize.height;
+    if([self isKindOfClass:[UILabel class]]){
+        if ([self isKindOfClass:[XXXXLabel class]] && [((UILabel *)self) attributedText]) {
+            NSAttributedString *attrText = [((UILabel *)self) attributedText];
+            CGRect frame = [attrText boundingRectWithSize:CGSizeMake(self.flex_layoutWidth, MAXFLOAT)
+                                                  options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
+                                                  context:nil];
+            return CGRectGetHeight(frame);
         }
         
+        UILabel *selfLabel = (UILabel *)self;
         CGRect labelSize = [selfLabel.text boundingRectWithSize:CGSizeMake([self flex_layoutWidth], [UIScreen mainScreen].bounds.size.height) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingTruncatesLastVisibleLine attributes:[NSDictionary dictionaryWithObjectsAndKeys:selfLabel.font,NSFontAttributeName, nil] context:nil];
         return ceil(labelSize.size.height + self.flex_textInsetVertical * 2);
     }
@@ -302,13 +302,6 @@
 
 - (CGFloat) flex_estimateTotalWithContent{
     return [self flex_estimateWidthWithContent] + self.flex_marginLeft + self.flex_marginRight;
-}
-
-- (void)flex_updateLayout {
-    dispatch_main_sync_safe(^{
-        [self setNeedsLayout];
-        [self layoutIfNeeded];
-    });
 }
 
 

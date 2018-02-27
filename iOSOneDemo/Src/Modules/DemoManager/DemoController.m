@@ -39,6 +39,7 @@
     
     [self.outerBox attachView:self.view];
     self.outerBox.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    [self addObserver:self forKeyPath:@"outerBox.frame" options:0 context:NULL];
 //    self.outerBox.autoresizesSubviews = YES;
 }
 
@@ -72,7 +73,7 @@
 - (XXXXButton *)addButtonOnView:(UIView *)view withText:(NSString *)text block:(XXXXButtonBlock)block {
     XXXXButton *button = [XXXXButton buttonWithType:XXXXButtonTypeDefault text:text onPress:block];
     button.flex_alignSelf = FlexAlignSelf_stretch;
-    button.flex_margin = @[@15];
+    button.flex_margin = @[@15,@10];
     if ([view respondsToSelector:@selector(flex_addSubview:)]) {
         [view performSelector:@selector(flex_addSubview:) withObject:button];
     } else {
@@ -103,12 +104,7 @@
     if (margin) {
         label.flex_margin = margin;
     } else {
-        label.flex_margin = @[@15];
-    }
-    if ([ControllerManageService sharedInstance].splitViewController.collapsed) {
-        label.flex_layoutWidth = kAppDimension.screenWidth - 80 ;
-    } else {
-        label.flex_layoutWidth = kAppDimension.screenWidth / 2 - 80;
+        label.flex_margin = @[@15,@10];
     }
     label.numberOfLines = 0;
     label.flex_alignSelf = FlexAlignSelf_stretch;
@@ -120,7 +116,6 @@
     } else {
         NSAssert(NO, @"Only add description on layout");
     }
-    
     
     return label;
 }
@@ -200,6 +195,15 @@
     return box;
 }
 
+#pragma mark - < Observer Methods >
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if([keyPath isEqualToString:@"outerBox.frame"]) {
+        if (self.outerBox.frame.size.height > 0 && self.outerBox.frame.size.width > 0) {
+            [self.outerBox flex_updateLayout];
+        }
+    }
+}
 
 #pragma mark - < Delegate Methods >
 

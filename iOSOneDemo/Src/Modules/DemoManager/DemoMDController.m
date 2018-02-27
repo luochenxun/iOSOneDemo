@@ -57,15 +57,17 @@
     NSString *mdFile = [FCFileManager pathForMainBundleDirectoryWithPath:_demoName];
     if ([FCFileManager existsItemAtPath:mdFile]) {
         NSString *mdContent = [FCFileManager readFileAtPath:mdFile];
-        mdContent = [@"<style>\
-                     pre{\
-                         font-size:8px;\
-                         background-color:#e7e7e7;\
-                     width:2000\
-                     }\
-                     </style>\n\n" stringByAppendingString:mdContent];
         NSError *error;
         _demoMDContent = [MMMarkdown HTMLStringWithMarkdown:mdContent error:&error];
+        if (_demoMDContent.length > 0) {
+            _demoMDContent = [@"<style>\
+                         pre {\
+                              font:14px/1.5 \"PingFang SC\", STXihei; \
+                              background-color:#e7e7e7; \
+                              width:2000em \
+                         }\
+                         </style>\n\n" stringByAppendingString:_demoMDContent];
+        }
         if (error) {
             _readMDErrorMsg = [error localizedDescription];
         }

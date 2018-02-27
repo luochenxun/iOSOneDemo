@@ -64,14 +64,12 @@
 + (instancetype)viewWithFlexSize:(CGSize)aSize;
 - (instancetype)initWithFlexSize:(CGSize)aSize;
 
-@property (nonatomic , assign) CGSize flexSize;
-- (void)setFlexSize:(CGSize)aSize;
-
 
 /**
- 更新布局（如果布局内控件发生改变时，如Label长度发生变化等）
+ *  设置View的flexSize
  */
-- (void)flex_updateLayout;
+@property (nonatomic , assign) CGSize flexSize;
+- (void)setFlexSize:(CGSize)aSize;
 
 /**
  设置 View的 Margin边距，参数为数组。 <p>
