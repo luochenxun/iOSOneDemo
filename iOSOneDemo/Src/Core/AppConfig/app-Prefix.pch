@@ -25,6 +25,7 @@
 
 #import "XXBase.h"
 #import "SystemInfo.h"
+#import "EncodeMacro.h"
 
 
 /**--------------

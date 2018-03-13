@@ -26,5 +26,9 @@
     return @"ViewAppearance";
 }
 
++ (NSString *)prioritySerial {
+    return @"1.1";
+}
+
 
 @end

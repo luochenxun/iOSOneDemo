@@ -12,7 +12,7 @@
 
 #pragma mark - < Init Methods >
 
-- (instancetype)initWithName:(NSString *)name displayName:(NSString *)disName parane:(NSString *)parentName type:(DemoType)type priority:(DemoPriority)priority{
+- (instancetype)initWithName:(NSString *)name displayName:(NSString *)disName parane:(NSString *)parentName type:(DemoType)type priority:(NSString *)priority{
     if (self = [super init]) {
         _name = name;
         _displayName = disName;

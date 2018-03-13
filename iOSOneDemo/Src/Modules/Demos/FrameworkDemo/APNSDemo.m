@@ -32,6 +32,10 @@
     return @"FrameworkDemo";
 }
 
++ (NSString *)prioritySerial {
+    return @"3.1.0";
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];

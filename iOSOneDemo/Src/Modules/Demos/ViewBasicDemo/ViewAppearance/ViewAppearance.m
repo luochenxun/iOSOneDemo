@@ -28,4 +28,8 @@
     return @"ViewBasicDemo";
 }
 
++ (NSString *)prioritySerial {
+    return @"1.1";
+}
+
 @end

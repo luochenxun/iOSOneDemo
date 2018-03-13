@@ -1,15 +1,15 @@
 //
-//  ViewCoordinateDemo.h
+//  DrawingAdvance.h
 //  iOSOneDemo
 //
 //  Created by luochenxun on 2018/1/6.
 //  Copyright © 2018年 Kacha-Mobile. All rights reserved.
 //
-//    View坐标系 Demo
+//    绘图进阶
 
 
 #import "DemoController.h"
 
-@interface ViewCoordinateDemo : DemoController  <DemoProtocol>
+@interface DrawingAdvance : DemoController  <DemoProtocol>
 
 @end

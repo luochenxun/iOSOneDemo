@@ -31,4 +31,8 @@
     return @"root";
 }
 
++ (NSString *)prioritySerial {
+    return @"3.0";
+}
+
 @end

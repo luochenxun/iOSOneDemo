@@ -28,4 +28,8 @@
     return @"LCXDemo";
 }
 
++ (NSString *)prioritySerial {
+    return @"1.1";
+}
+
 @end

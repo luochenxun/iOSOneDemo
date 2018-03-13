@@ -30,8 +30,8 @@
     return @"ViewBasicDemo";
 }
 
-+ (DemoPriority)priority {
-    return DemoPriorityHight;
++ (NSString *)prioritySerial {
+    return @"1.0";
 }
 
 

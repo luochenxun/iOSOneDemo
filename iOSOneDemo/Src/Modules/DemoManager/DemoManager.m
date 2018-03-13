@@ -49,7 +49,7 @@
     if ([demoClass isSubclassOfClass:[DemoController class]] || [demoClass isSubclassOfClass:[DemoMDController class]]) {
         type = DemoTypeController;
     }
-    DemoPriority priority = ([demoClass respondsToSelector:@selector(priority)])?[demoClass priority]:DemoPriorityDefault;
+    NSString *priority = ([demoClass respondsToSelector:@selector(prioritySerial)])?[demoClass prioritySerial]:@"";
     [_demos addObject:[[DemoDataModel alloc] initWithName:[demoClass name]
                                               displayName:[demoClass displayName]
                                                    parane:[demoClass parentName]
@@ -125,14 +125,7 @@
 - (void)treeSortDemos:(NSMutableArray<DemoDataModel *> *)demos {
     if (demos.count > 0) {
         [demos sortUsingComparator:^NSComparisonResult(DemoDataModel *obj1, DemoDataModel *obj2) {
-            if (obj1.priority > obj2.priority) {
-                return NSOrderedAscending;
-            }
-            else if (obj1.priority == obj2.priority) {
-                return NSOrderedSame;
-            } else {
-                return NSOrderedDescending;
-            }
+            return [obj1.priority compare:obj2.priority];
         }];
         
         for (DemoDataModel *demo in demos) {

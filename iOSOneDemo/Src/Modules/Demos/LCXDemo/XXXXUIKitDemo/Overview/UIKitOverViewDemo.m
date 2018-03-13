@@ -36,9 +36,8 @@
     return @"XXXXUIKitDemo";
 }
 
-
-+ (DemoPriority)priority {
-    return DemoPriorityHight;
++ (NSString *)prioritySerial {
+    return @"1.1";
 }
 
 - (void)viewDidLoad {

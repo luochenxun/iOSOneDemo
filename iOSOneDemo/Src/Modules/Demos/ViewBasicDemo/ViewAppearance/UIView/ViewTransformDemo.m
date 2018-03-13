@@ -31,6 +31,10 @@
     return @"UIViewDemo";
 }
 
++ (NSString *)prioritySerial {
+    return @"1.4";
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -1,29 +1,33 @@
 //
-//  UIViewDemo.m
+//  DrawingDemo.m
 //  iOSOneDemo
 //
 //  Created by luochenxun on 2018/1/6.
 //  Copyright © 2018年 Kacha-Mobile. All rights reserved.
 //
 
-#import "UIViewDemo.h"
+#import "DrawingDemo.h"
 
-@implementation UIViewDemo
+@implementation DrawingDemo
 
 + (void)load {
-    [[DemoManager sharedManager] registerDemo:UIViewDemo.class];
+    [[DemoManager sharedManager] registerDemo:DrawingDemo.class];
 }
 
 + (NSString *)displayName {
-    return @"iOS View 基础";
+    return @"2D 绘图";
 }
 
 + (NSString *)name {
-    return @"UIViewDemo";
+    return @"DrawingDemo";
 }
 
 + (NSString *)parentName {
     return @"ViewAppearance";
+}
+
++ (NSString *)prioritySerial {
+    return @"1.2";
 }
 
 
