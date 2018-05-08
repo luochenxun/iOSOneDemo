@@ -10,4 +10,6 @@
 
 @interface ViewHierarchyDemo : DemoController  <DemoProtocol>
 
+@property (nonatomic, weak) id obj;
+
 @end

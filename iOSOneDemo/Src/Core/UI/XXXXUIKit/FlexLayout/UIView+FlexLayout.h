@@ -17,13 +17,13 @@
  *  The layout size of the view.
  */
 @property (nonatomic , assign) CGFloat flex_layoutWidth;
-@property (nonatomic , assign) CGFloat flex_layoutHeigh;
+@property (nonatomic , assign) CGFloat flex_layoutHeight;
 
 /**
  *  The total size calculate by layoutSize and marginSize
  */
 @property (nonatomic , readonly, assign) CGFloat flex_totalWidth;
-@property (nonatomic , readonly, assign) CGFloat flex_totalHeigh;
+@property (nonatomic , readonly, assign) CGFloat flex_totalHeight;
 
 /**
  当参数数组为一个值时，此margin设为所有边的Margin；2个值时，第一个设为水平方向两边的Margin，第二个为垂直方向两边的Margin；为4个值时分别为“左上右下（顺时针）”四个方向的边距

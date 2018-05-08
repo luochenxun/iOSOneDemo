@@ -107,7 +107,7 @@
     frame.size.height = [FlexLayout isLinePx:heightOfLayout] ? XXXX_SIZE_LINE : roundf(heightOfLayout);
     _delegateView.frame = frame;
     
-    _delegateView.flex_layoutHeigh = [FlexLayout isLinePx:heightOfLayout] ? XXXX_SIZE_LINE : roundf(heightOfLayout);
+    _delegateView.flex_layoutHeight = [FlexLayout isLinePx:heightOfLayout] ? XXXX_SIZE_LINE : roundf(heightOfLayout);
 }
 
 - (CGFloat)estimateLayoutHeightBySubviews
@@ -116,7 +116,7 @@
     // If the direction of the layout is row , use the most-height-one's height as the layout's height
     if (_flexDirection == FlexDirection_row) {
         for (UIView *subview in self.flex_subViews) {
-            heightOfLayout = _delegateView.frame.size.height ?: _delegateView.flex_layoutHeigh;
+            heightOfLayout = _delegateView.frame.size.height ?: _delegateView.flex_layoutHeight;
             
             // skip the hidden-view
             if (subview.hidden == YES) {
@@ -124,8 +124,8 @@
             }
             
             CGFloat childHeight = 0;
-            if (subview.flex_totalHeigh > 0) {
-                childHeight = subview.flex_totalHeigh;
+            if (subview.flex_totalHeight > 0) {
+                childHeight = subview.flex_totalHeight;
             } else if ([FlexLayout isFlexLayout:subview]) {
                 childHeight = [(FlexLayout *)[subview valueForKey:@"concreteLayout"] estimateLayoutHeightBySubviews];
             }
@@ -145,8 +145,8 @@
             }
             
             CGFloat childHeight = 0;
-            if (subview.flex_totalHeigh > 0) {
-                childHeight = subview.flex_totalHeigh;
+            if (subview.flex_totalHeight > 0) {
+                childHeight = subview.flex_totalHeight;
             } else if ([FlexLayout isFlexLayout:subview]) {
                 childHeight = [(FlexLayout *)[subview valueForKey:@"concreteLayout"] estimateLayoutHeightBySubviews];
             }

@@ -12,6 +12,7 @@
 
 @property (nonatomic, copy) NSString *demoName;
 @property (nonatomic, copy) NSString *demoDesName;
+@property (nonatomic, copy) NSString *mdUrl;
 
 @end
 

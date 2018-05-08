@@ -65,7 +65,7 @@
     normalTransformBox.alignItems = FlexAlignSelf_center;
     
     UIView *stage1View = [UIView new];
-    stage1View.flex_layoutHeigh = 200;
+    stage1View.flex_layoutHeight = 200;
     stage1View.flex_margin = @[@50,@30];
     stage1View.backgroundColor = [UIColor yellowColor];
     [self addLabelOnView:stage1View withText:@"stage1"];
@@ -121,7 +121,7 @@
     multiTransformBox.alignItems = FlexAlignSelf_center;
     
     UIView *stage2View = [UIView new];
-    stage2View.flex_layoutHeigh = 200;
+    stage2View.flex_layoutHeight = 200;
     stage2View.flex_margin = @[@50,@30];
     stage2View.backgroundColor = [UIColor yellowColor];
     [self addLabelOnView:stage2View withText:@"stage1"];

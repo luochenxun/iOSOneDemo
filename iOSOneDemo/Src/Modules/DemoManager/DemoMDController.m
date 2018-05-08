@@ -54,22 +54,25 @@
     if (_demoName && ![_demoName.pathExtension isEqualToString:@"md"]) {
         _demoName = [_demoName stringByAppendingString:@".md"];
     }
-    NSString *mdFile = [FCFileManager pathForMainBundleDirectoryWithPath:_demoName];
-    if ([FCFileManager existsItemAtPath:mdFile]) {
-        NSString *mdContent = [FCFileManager readFileAtPath:mdFile];
-        NSError *error;
-        _demoMDContent = [MMMarkdown HTMLStringWithMarkdown:mdContent error:&error];
-        if (_demoMDContent.length > 0) {
-            _demoMDContent = [@"<style>\
-                         pre {\
-                              font:14px/1.5 \"PingFang SC\", STXihei; \
-                              background-color:#e7e7e7; \
-                              width:2000em \
-                         }\
-                         </style>\n\n" stringByAppendingString:_demoMDContent];
-        }
-        if (error) {
-            _readMDErrorMsg = [error localizedDescription];
+    
+    if (_demoName) {
+        NSString *mdFile = [FCFileManager pathForMainBundleDirectoryWithPath:_demoName];
+        if ([FCFileManager existsItemAtPath:mdFile]) {
+            NSString *mdContent = [FCFileManager readFileAtPath:mdFile];
+            NSError *error;
+            _demoMDContent = [MMMarkdown HTMLStringWithMarkdown:mdContent error:&error];
+            if (_demoMDContent.length > 0) {
+                _demoMDContent = [@"<style>\
+                                  pre {\
+                                  font:14px/1.5 \"PingFang SC\", STXihei; \
+                                  background-color:#e7e7e7; \
+                                  width:2000em \
+                                  }\
+                                  </style>\n\n" stringByAppendingString:_demoMDContent];
+            }
+            if (error) {
+                _readMDErrorMsg = [error localizedDescription];
+            }
         }
     }
 }
@@ -89,7 +92,12 @@
     if (_demoMDContent.length > 0) {
         [_webView loadHTMLString:_demoMDContent
                          baseURL:[NSURL fileURLWithPath:[FCFileManager pathForMainBundleDirectoryWithPath:_demoName]]];
-    } else {
+    } else if (_mdUrl.length > 0) {
+        NSURL *url = [NSURL URLWithString:_mdUrl];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        [_webView loadRequest:request];
+    }
+    else {
         [_webView loadHTMLString:_readMDErrorMsg baseURL:nil];
     }
 }

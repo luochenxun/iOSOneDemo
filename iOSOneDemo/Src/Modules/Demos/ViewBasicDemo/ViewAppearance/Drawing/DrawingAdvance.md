@@ -89,36 +89,165 @@ View内部有个layer（图层）属性，drawRect:方法中取得的是一个La
 ## Paths & Shapes
 
 1. path是什么；
+2. path的主要方法
 2. strok & fill；
 3. context是怎样画路径的；
 
-- path是什么
+### path是什么
 
 path 就是路径，用来形容画画时的笔触。比如我们画画时从A点画条直线到B点，这条连线就叫path。
 
-- strok & fill
+
+### path的主要方法
+
+-  Point（画点）
+
+点是在用户空间中指定一个位置。
+可以使用下面的 MoveToPoint 指定一个新的子路径的起始位置. 当前点有跟踪功能，也就是说你用LineToPoint 画到哪个点后，当前点就变成你要画到的那个点。
+
+<pre>
+
+CGContextMoveToPoint(cg, point)
+
+</pre>
+
+
+- Lines （画线）
+
+两点之间相连就成为一条线。
+
+<pre>
+
+CGContextAddLineToPoint(cg, point)
+CGContextAddLines(cg, points)
+
+// 在一个 300x300的画布上stroke一个三角形
+CGContextMoveToPoint(context, 150, 10); // 落笔，先将笔触移到画布的某点（三角形顶点）
+CGContextAddLineToPoint(context, 10, 280); // 分别连接另两个顶点的线
+CGContextAddLineToPoint(context, 280, 280);
+CGContextClosePath(context);
+CGContextSetLineWidth(context, 5); // 设置线粗
+CGContextSetStrokeColorWithColor(context, [UIColor greenColor].CGColor); // 画线的颜色
+CGContextStrokePath(context); // 画线
+
+</pre>
+
+
+- Rectangles（矩形）
+
+
+<pre>
+
+CGContextAddRect(cg, rect)
+CGContextAddRects(cg, rects)
+
+CGContextAddRect(context, CGRectMake(10, 10, 50, 50)); // 画一个矩形
+CGContextSetFillColorWithColor(context, [UIColor redColor].CGColor); // fillCOlor
+CGContextFillPath(context);
+
+</pre>
+
+
+- Ellipse and Circle (椭圆与圆)
+
+会沿着传入的rect的边画出椭圆或圆。如果传入的 rect 为正方形，就是圆。
+
+<pre>
+
+CGContextAddEllipseInRect(cg, cgrect)
+
+CGContextAddEllipseInRect(context, CGRectMake(0, 0, 50, 50)); // 画一个圆
+CGContextSetFillColorWithColor(context, [UIColor greenColor].CGColor); // fillCOlor
+CGContextFillPath(context);
+
+CGContextAddEllipseInRect(context, CGRectMake(70, 0, 50, 100)); // 画一个椭
+CGContextSetFillColorWithColor(context, [UIColor blueColor].CGColor); // fillCOlor
+CGContextFillPath(context);
+</pre>
+
+
+
+- Arc (弧)
+
+![画弧示例](./MDImage/drawing_arc.png)
+![画弧示例2](./MDImage/drawing_arc.png)
+
+<pre>
+
+CGContextAddArc(context, x, y, radius, start, end, clockwise)
+CGContextAddArcToPoint(cg, x1, y1, x2, y2, radius)
+
+- x,y 圆心
+- radius 半径
+- start, end 起点、终点
+- clockwise:  1 逆时针 ， 0 顺时针
+- 注意，水平右侧为起点
+----------
+x1,y1; x2,y2 - 圆弧的两个端点与半径
+P1(x,y)和(x1,y1)构成切线1,(x1,y1)和(x2,y2)构成切线2, r 是上面函数中的radius, 红色的线就是CGContextAddArcToPoint绘制的曲线. 它不会画到 (x2, y2)这个点， 绘制到圆弧的终点就会停止
+
+CGContextAddArc(context, 20, 20, 10, 0, 2 * M_PI, 1); // 画圆
+CGContextSetLineWidth(context, 3); // 设置线粗
+CGContextSetStrokeColorWithColor(context, [UIColor redColor].CGColor); // 画线的颜色
+CGContextStrokePath(context); // 画线
+
+CGContextAddArc(context, 60, 20, 10, 0, M_PI/2.0, 1); // 逆时针画条从0到pi/2的弧
+CGContextSetStrokeColorWithColor(context, [UIColor greenColor].CGColor); // 画线的颜色
+CGContextStrokePath(context); // 画线
+
+CGContextAddArcToPoint(context, 70, 20, 90, 50, 10);
+CGContextSetStrokeColorWithColor(context, [UIColor grayColor].CGColor);
+CGContextStrokePath(context); // 画线
+
+</pre>
+
+- Bezier Curves贝塞尔曲线
+
+贝塞尔曲线一般包含控制点（cpx, cpy）和一个终点(x, y)
+![贝塞尔曲线示例](./MDImage/drawing_bezier.png)
+
+<pre>
+CGContextAddCurveToPoint(cg, cx, cy, endX, endY)
+CGContextAddQuadCurveToPoint
+</pre>
+
+### strok & fill
 
 stroke [strok] vt. 画；敲击
 stroke就是画线，用设置好的画笔属性（线粗细、颜色等）去描绘你规划好的path。
 fill 会高级点，他会分析你规划的path，对其中封闭的区域使用设置好的画笔属性去填充之。
 
-比如示例中的例子：
 
 <pre>
+线宽    CGContextSetLineWidth
+线帽类型    CGContextSetLineCap
+线段间连接样式    CGContextSetLineJoin
+斜接限制    CGContextSetMiterLimit
+行缓冲模式    CGContextSetLineDash
+绘线颜色空间(stroke)    CGContextSetStrokeColorSpace
+绘线颜色    CGContextSetStrokeColor、CGContextSetStrokeColorWithColor
+纹理    CGContextSetStrokePattern
 
+CGContextStrokePath    绘制路线
+CGContextStrokeRect    使用当前线宽和线色绘制矩形
+CGContextStrokeRectWithWidth    使用指定线宽绘制矩形
+CGContextStrokeEllipseInRect    绘制椭圆
+CGContextStrokeLineSegments    绘制线段
+CGContextDrawPath    指定模式下渲染路径
+// drawMode
+typedef CF_ENUM (int32_t, CGPathDrawingMode) {
+    kCGPathFill,  //只有填充（非零缠绕数填充），不绘制边框
+    kCGPathEOFill, //奇偶规则填充
+    kCGPathStroke, //只有边框
+    kCGPathFillStroke, // 既有边框又有填充
+    kCGPathEOFillStroke //奇偶填充并绘制边框
+};
 </pre>
 
-- context是怎样画路径的
+
+### context是怎样画路径的
 
 从示例我们可以看出，首先，我们要利用path的api移动点与连接，规划好要绘制的路径。然后调用stroke或fill真正地将之渲染到context中去。而这个渲染过程结束后，也就是调用了stroke或fill之后，context中当前的path将被清空，这就意味着你stroke之后马上调用fill就不能填充出图画了。
-
-
-
-
-
-
-
-
 
 
 

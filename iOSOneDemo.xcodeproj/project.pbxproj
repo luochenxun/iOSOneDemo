@@ -14,11 +14,26 @@
 		860BC2D91CD3649600AC633F /* XXBlockButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 860BC2C71CD3649600AC633F /* XXBlockButton.m */; };
 		860BC2DA1CD3649600AC633F /* XXDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 860BC2CA1CD3649600AC633F /* XXDropDownMenu.m */; };
 		860BC2DB1CD3649600AC633F /* XXToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 860BC2CD1CD3649600AC633F /* XXToast.m */; };
+		860D987A205F60170016B94F /* ImageAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 860D9876205F60150016B94F /* ImageAnimation.m */; };
+		860D987B205F60170016B94F /* ImageAnimation.md in Resources */ = {isa = PBXBuildFile; fileRef = 860D9877205F60150016B94F /* ImageAnimation.md */; };
+		860D987C205F60170016B94F /* AnimationDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 860D9878205F60150016B94F /* AnimationDemo.m */; };
+		860D9880205F68100016B94F /* UIViewAnimationDemo.md in Resources */ = {isa = PBXBuildFile; fileRef = 860D987D205F680F0016B94F /* UIViewAnimationDemo.md */; };
+		860D9881205F68100016B94F /* UIViewAnimationDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 860D987F205F68100016B94F /* UIViewAnimationDemo.m */; };
+		8621D62B2058B01C007A3934 /* CALayerBasicDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8621D6292058B01C007A3934 /* CALayerBasicDemo.m */; };
+		8621D62C2058B01C007A3934 /* CALayerBasicDemo.md in Resources */ = {isa = PBXBuildFile; fileRef = 8621D62A2058B01C007A3934 /* CALayerBasicDemo.md */; };
+		8621D64A205B5CBC007A3934 /* CALayerTransformDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8621D647205B5CBB007A3934 /* CALayerTransformDemo.m */; };
+		8621D64B205B5CBC007A3934 /* CALayerTransformDemo.md in Resources */ = {isa = PBXBuildFile; fileRef = 8621D649205B5CBC007A3934 /* CALayerTransformDemo.md */; };
+		86238999206A90E900A92A08 /* AnimationBasicMD.m in Sources */ = {isa = PBXBuildFile; fileRef = 86238997206A90E800A92A08 /* AnimationBasicMD.m */; };
+		8623899A206A90E900A92A08 /* AnimationBasicMD.md in Resources */ = {isa = PBXBuildFile; fileRef = 86238998206A90E900A92A08 /* AnimationBasicMD.md */; };
+		8629C6EB2060AE5800F48866 /* ImplicitAnimationDemo.md in Resources */ = {isa = PBXBuildFile; fileRef = 8629C6E82060AE5800F48866 /* ImplicitAnimationDemo.md */; };
+		8629C6EC2060AE5800F48866 /* ImplicitAnimationDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8629C6EA2060AE5800F48866 /* ImplicitAnimationDemo.m */; };
 		862F17021F4BDC6400CDDE8A /* XXLaunch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 862F17011F4BDC6400CDDE8A /* XXLaunch.storyboard */; };
 		86373A9A1C1073230093E29D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 86373A991C1073230093E29D /* main.m */; };
 		86373AA51C1073230093E29D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86373AA41C1073230093E29D /* Assets.xcassets */; };
 		86373AB31C1073240093E29D /* XXXXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 86373AB21C1073240093E29D /* XXXXTests.m */; };
 		86373ABE1C1073240093E29D /* XXXXUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 86373ABD1C1073240093E29D /* XXXXUITests.m */; };
+		864F07C32060E901006053E3 /* CoreAnimationDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 864F07C02060E901006053E3 /* CoreAnimationDemo.m */; };
+		864F07C42060E901006053E3 /* CoreAnimationDemo.md in Resources */ = {isa = PBXBuildFile; fileRef = 864F07C12060E901006053E3 /* CoreAnimationDemo.md */; };
 		865539101FFBE76A0091F726 /* TestService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8655390F1FFBE76A0091F726 /* TestService.m */; };
 		865539131FFBE9920091F726 /* DemoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 865539121FFBE9920091F726 /* DemoManager.m */; };
 		865539161FFBEACE0091F726 /* DemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 865539151FFBEACE0091F726 /* DemoController.m */; };
@@ -76,6 +91,10 @@
 		86562A2D205048BA00404898 /* DrawingAdvance.m in Sources */ = {isa = PBXBuildFile; fileRef = 86562A2B205048BA00404898 /* DrawingAdvance.m */; };
 		86562A3F205121AE00404898 /* KVCAndKVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 86562A3C205121AD00404898 /* KVCAndKVO.m */; };
 		86562A40205121AE00404898 /* KVCAndKVO.md in Resources */ = {isa = PBXBuildFile; fileRef = 86562A3D205121AE00404898 /* KVCAndKVO.md */; };
+		869BB7B0206890EC00CD81E3 /* CALayerPropertyDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 869BB7AE206890EB00CD81E3 /* CALayerPropertyDemo.m */; };
+		869BB7B1206890EC00CD81E3 /* CALayerPropertyDemo.md in Resources */ = {isa = PBXBuildFile; fileRef = 869BB7AF206890EC00CD81E3 /* CALayerPropertyDemo.md */; };
+		869BB7B52068A6BC00CD81E3 /* CALayerToolsDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 869BB7B22068A6BB00CD81E3 /* CALayerToolsDemo.m */; };
+		869BB7B62068A6BC00CD81E3 /* CALayerToolsDemo.md in Resources */ = {isa = PBXBuildFile; fileRef = 869BB7B42068A6BC00CD81E3 /* CALayerToolsDemo.md */; };
 		869EB9E41CD3578400FA75DB /* XXLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 869EB95E1CD3578400FA75DB /* XXLocationManager.m */; };
 		869EB9E51CD3578400FA75DB /* AlbumHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 869EB9641CD3578400FA75DB /* AlbumHelper.m */; };
 		869EB9F41CD3578400FA75DB /* XXXXAppContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 869EB9A21CD3578400FA75DB /* XXXXAppContext.m */; };
@@ -105,6 +124,9 @@
 		86B532AD200652D600BAF480 /* ViewBasicDemoMD.md in Resources */ = {isa = PBXBuildFile; fileRef = 86B532AC200652D600BAF480 /* ViewBasicDemoMD.md */; };
 		86B532B120070F9400BAF480 /* IOSSpecialDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B532B020070F9400BAF480 /* IOSSpecialDemo.m */; };
 		86B532B42007103700BAF480 /* ChangeIconDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B532B32007103700BAF480 /* ChangeIconDemo.m */; };
+		86B797AB207208E8002DF455 /* MultiThreadDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B797A6207208E7002DF455 /* MultiThreadDemo.m */; };
+		86B797AC207208E8002DF455 /* MultiThreadDemo.md in Resources */ = {isa = PBXBuildFile; fileRef = 86B797A8207208E7002DF455 /* MultiThreadDemo.md */; };
+		86B797AD207208E8002DF455 /* NetworkDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B797AA207208E7002DF455 /* NetworkDemo.m */; };
 		86E2F014204D299E004CE53F /* DrawingImageDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E2F012204D299D004CE53F /* DrawingImageDemo.m */; };
 		86E2F015204D299E004CE53F /* DrawingImageDemo.md in Resources */ = {isa = PBXBuildFile; fileRef = 86E2F013204D299E004CE53F /* DrawingImageDemo.md */; };
 		86E2F019204D9EFB004CE53F /* FilterDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E2F016204D9EFB004CE53F /* FilterDemo.m */; };
@@ -153,6 +175,26 @@
 		860BC2CA1CD3649600AC633F /* XXDropDownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDropDownMenu.m; sourceTree = "<group>"; };
 		860BC2CC1CD3649600AC633F /* XXToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXToast.h; sourceTree = "<group>"; };
 		860BC2CD1CD3649600AC633F /* XXToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXToast.m; sourceTree = "<group>"; };
+		860D9875205F60150016B94F /* AnimationDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationDemo.h; sourceTree = "<group>"; };
+		860D9876205F60150016B94F /* ImageAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageAnimation.m; sourceTree = "<group>"; };
+		860D9877205F60150016B94F /* ImageAnimation.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = ImageAnimation.md; sourceTree = "<group>"; };
+		860D9878205F60150016B94F /* AnimationDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationDemo.m; sourceTree = "<group>"; };
+		860D9879205F60150016B94F /* ImageAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageAnimation.h; sourceTree = "<group>"; };
+		860D987D205F680F0016B94F /* UIViewAnimationDemo.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = UIViewAnimationDemo.md; sourceTree = "<group>"; };
+		860D987E205F68100016B94F /* UIViewAnimationDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewAnimationDemo.h; sourceTree = "<group>"; };
+		860D987F205F68100016B94F /* UIViewAnimationDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewAnimationDemo.m; sourceTree = "<group>"; };
+		8621D6282058B01B007A3934 /* CALayerBasicDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CALayerBasicDemo.h; sourceTree = "<group>"; };
+		8621D6292058B01C007A3934 /* CALayerBasicDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CALayerBasicDemo.m; sourceTree = "<group>"; };
+		8621D62A2058B01C007A3934 /* CALayerBasicDemo.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CALayerBasicDemo.md; sourceTree = "<group>"; };
+		8621D647205B5CBB007A3934 /* CALayerTransformDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CALayerTransformDemo.m; sourceTree = "<group>"; };
+		8621D648205B5CBB007A3934 /* CALayerTransformDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CALayerTransformDemo.h; sourceTree = "<group>"; };
+		8621D649205B5CBC007A3934 /* CALayerTransformDemo.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CALayerTransformDemo.md; sourceTree = "<group>"; };
+		86238996206A90E800A92A08 /* AnimationBasicMD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationBasicMD.h; sourceTree = "<group>"; };
+		86238997206A90E800A92A08 /* AnimationBasicMD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationBasicMD.m; sourceTree = "<group>"; };
+		86238998206A90E900A92A08 /* AnimationBasicMD.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = AnimationBasicMD.md; sourceTree = "<group>"; };
+		8629C6E82060AE5800F48866 /* ImplicitAnimationDemo.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = ImplicitAnimationDemo.md; sourceTree = "<group>"; };
+		8629C6E92060AE5800F48866 /* ImplicitAnimationDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImplicitAnimationDemo.h; sourceTree = "<group>"; };
+		8629C6EA2060AE5800F48866 /* ImplicitAnimationDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImplicitAnimationDemo.m; sourceTree = "<group>"; };
 		862F17011F4BDC6400CDDE8A /* XXLaunch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = XXLaunch.storyboard; sourceTree = "<group>"; };
 		86373A951C1073230093E29D /* iOSOneDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSOneDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86373A991C1073230093E29D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -164,6 +206,9 @@
 		86373AB91C1073240093E29D /* iOSOneDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSOneDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		86373ABD1C1073240093E29D /* XXXXUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXXUITests.m; sourceTree = "<group>"; };
 		86373ABF1C1073240093E29D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		864F07C02060E901006053E3 /* CoreAnimationDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreAnimationDemo.m; sourceTree = "<group>"; };
+		864F07C12060E901006053E3 /* CoreAnimationDemo.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CoreAnimationDemo.md; sourceTree = "<group>"; };
+		864F07C22060E901006053E3 /* CoreAnimationDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreAnimationDemo.h; sourceTree = "<group>"; };
 		8655390E1FFBE76A0091F726 /* TestService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestService.h; sourceTree = "<group>"; };
 		8655390F1FFBE76A0091F726 /* TestService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestService.m; sourceTree = "<group>"; };
 		865539111FFBE9920091F726 /* DemoManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoManager.h; sourceTree = "<group>"; };
@@ -277,6 +322,12 @@
 		86562A3C205121AD00404898 /* KVCAndKVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KVCAndKVO.m; sourceTree = "<group>"; };
 		86562A3D205121AE00404898 /* KVCAndKVO.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = KVCAndKVO.md; sourceTree = "<group>"; };
 		86562A3E205121AE00404898 /* KVCAndKVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVCAndKVO.h; sourceTree = "<group>"; };
+		869BB7AD206890EB00CD81E3 /* CALayerPropertyDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CALayerPropertyDemo.h; sourceTree = "<group>"; };
+		869BB7AE206890EB00CD81E3 /* CALayerPropertyDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CALayerPropertyDemo.m; sourceTree = "<group>"; };
+		869BB7AF206890EC00CD81E3 /* CALayerPropertyDemo.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CALayerPropertyDemo.md; sourceTree = "<group>"; };
+		869BB7B22068A6BB00CD81E3 /* CALayerToolsDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CALayerToolsDemo.m; sourceTree = "<group>"; };
+		869BB7B32068A6BC00CD81E3 /* CALayerToolsDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CALayerToolsDemo.h; sourceTree = "<group>"; };
+		869BB7B42068A6BC00CD81E3 /* CALayerToolsDemo.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CALayerToolsDemo.md; sourceTree = "<group>"; };
 		869EB95A1CD3578400FA75DB /* SystemDebugInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemDebugInfo.h; sourceTree = "<group>"; };
 		869EB95B1CD3578400FA75DB /* SystemInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemInfo.h; sourceTree = "<group>"; };
 		869EB95D1CD3578400FA75DB /* XXLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXLocationManager.h; sourceTree = "<group>"; };
@@ -334,6 +385,11 @@
 		86B532B22007103700BAF480 /* ChangeIconDemo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangeIconDemo.h; sourceTree = "<group>"; };
 		86B532B32007103700BAF480 /* ChangeIconDemo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangeIconDemo.m; sourceTree = "<group>"; };
 		86B532B52007104B00BAF480 /* ChangeIconDemo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ChangeIconDemo.md; sourceTree = "<group>"; };
+		86B797A6207208E7002DF455 /* MultiThreadDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiThreadDemo.m; sourceTree = "<group>"; };
+		86B797A7207208E7002DF455 /* NetworkDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkDemo.h; sourceTree = "<group>"; };
+		86B797A8207208E7002DF455 /* MultiThreadDemo.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = MultiThreadDemo.md; sourceTree = "<group>"; };
+		86B797A9207208E7002DF455 /* MultiThreadDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiThreadDemo.h; sourceTree = "<group>"; };
+		86B797AA207208E7002DF455 /* NetworkDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkDemo.m; sourceTree = "<group>"; };
 		86E2F011204D299D004CE53F /* DrawingImageDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawingImageDemo.h; sourceTree = "<group>"; };
 		86E2F012204D299D004CE53F /* DrawingImageDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawingImageDemo.m; sourceTree = "<group>"; };
 		86E2F013204D299E004CE53F /* DrawingImageDemo.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = DrawingImageDemo.md; sourceTree = "<group>"; };
@@ -487,6 +543,30 @@
 			path = XXToast;
 			sourceTree = "<group>";
 		};
+		860D9874205F60150016B94F /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				860D9875205F60150016B94F /* AnimationDemo.h */,
+				860D9878205F60150016B94F /* AnimationDemo.m */,
+				86238996206A90E800A92A08 /* AnimationBasicMD.h */,
+				86238997206A90E800A92A08 /* AnimationBasicMD.m */,
+				86238998206A90E900A92A08 /* AnimationBasicMD.md */,
+				860D9879205F60150016B94F /* ImageAnimation.h */,
+				860D9876205F60150016B94F /* ImageAnimation.m */,
+				860D9877205F60150016B94F /* ImageAnimation.md */,
+				860D987E205F68100016B94F /* UIViewAnimationDemo.h */,
+				860D987F205F68100016B94F /* UIViewAnimationDemo.m */,
+				860D987D205F680F0016B94F /* UIViewAnimationDemo.md */,
+				8629C6E92060AE5800F48866 /* ImplicitAnimationDemo.h */,
+				8629C6EA2060AE5800F48866 /* ImplicitAnimationDemo.m */,
+				8629C6E82060AE5800F48866 /* ImplicitAnimationDemo.md */,
+				864F07C22060E901006053E3 /* CoreAnimationDemo.h */,
+				864F07C02060E901006053E3 /* CoreAnimationDemo.m */,
+				864F07C12060E901006053E3 /* CoreAnimationDemo.md */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
 		8625DFBC1C11451B006C07B5 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -618,6 +698,7 @@
 				86562A12204E896D00404898 /* LanguageDemo */,
 				8655391F1FFC78D90091F726 /* ViewBasicDemo */,
 				86E3C8D1200E2AA800B658EF /* FrameworkDemo */,
+				86B797A5207208E7002DF455 /* NetworkDemo */,
 				86B532AE20070F9400BAF480 /* IOSSpecialDemo */,
 				865539DA20034B0B0091F726 /* LCXDemo */,
 			);
@@ -692,6 +773,7 @@
 				865539BA2000144E0091F726 /* UIView */,
 				86B525FA2045915E00C6AB2F /* Drawing */,
 				865539B31FFFDB5E0091F726 /* CALayer */,
+				860D9874205F60150016B94F /* Animation */,
 			);
 			path = ViewAppearance;
 			sourceTree = "<group>";
@@ -701,6 +783,18 @@
 			children = (
 				865539B41FFFDB5E0091F726 /* CALayerDemo.h */,
 				865539B51FFFDB5E0091F726 /* CALayerDemo.m */,
+				8621D6282058B01B007A3934 /* CALayerBasicDemo.h */,
+				8621D6292058B01C007A3934 /* CALayerBasicDemo.m */,
+				8621D62A2058B01C007A3934 /* CALayerBasicDemo.md */,
+				869BB7AD206890EB00CD81E3 /* CALayerPropertyDemo.h */,
+				869BB7AE206890EB00CD81E3 /* CALayerPropertyDemo.m */,
+				869BB7AF206890EC00CD81E3 /* CALayerPropertyDemo.md */,
+				8621D648205B5CBB007A3934 /* CALayerTransformDemo.h */,
+				8621D647205B5CBB007A3934 /* CALayerTransformDemo.m */,
+				8621D649205B5CBC007A3934 /* CALayerTransformDemo.md */,
+				869BB7B32068A6BC00CD81E3 /* CALayerToolsDemo.h */,
+				869BB7B22068A6BB00CD81E3 /* CALayerToolsDemo.m */,
+				869BB7B42068A6BC00CD81E3 /* CALayerToolsDemo.md */,
 			);
 			path = CALayer;
 			sourceTree = "<group>";
@@ -1164,6 +1258,18 @@
 			path = IOSSpecialDemo;
 			sourceTree = "<group>";
 		};
+		86B797A5207208E7002DF455 /* NetworkDemo */ = {
+			isa = PBXGroup;
+			children = (
+				86B797A7207208E7002DF455 /* NetworkDemo.h */,
+				86B797AA207208E7002DF455 /* NetworkDemo.m */,
+				86B797A9207208E7002DF455 /* MultiThreadDemo.h */,
+				86B797A6207208E7002DF455 /* MultiThreadDemo.m */,
+				86B797A8207208E7002DF455 /* MultiThreadDemo.md */,
+			);
+			path = NetworkDemo;
+			sourceTree = "<group>";
+		};
 		86E3C8D1200E2AA800B658EF /* FrameworkDemo */ = {
 			isa = PBXGroup;
 			children = (
@@ -1305,24 +1411,34 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8621D64B205B5CBC007A3934 /* CALayerTransformDemo.md in Resources */,
 				86B525F320450EC400C6AB2F /* ViewCoordinateDemo.md in Resources */,
 				86B526022045915E00C6AB2F /* UIImageDemo.md in Resources */,
 				86562A28204ED48400404898 /* ImageBasicDemo.md in Resources */,
 				86E2F015204D299E004CE53F /* DrawingImageDemo.md in Resources */,
+				864F07C42060E901006053E3 /* CoreAnimationDemo.md in Resources */,
 				86562A23204E958900404898 /* NSScannerDemo.md in Resources */,
 				86B532A52005C64700BAF480 /* DemoMain.md in Resources */,
+				860D987B205F60170016B94F /* ImageAnimation.md in Resources */,
+				86B797AC207208E8002DF455 /* MultiThreadDemo.md in Resources */,
 				86562A40205121AE00404898 /* KVCAndKVO.md in Resources */,
 				86B52607204591F600C6AB2F /* DrawingBasicMD.md in Resources */,
 				865539C5200300AF0091F726 /* ViewHierarchyDemo.md in Resources */,
+				8621D62C2058B01C007A3934 /* CALayerBasicDemo.md in Resources */,
+				8623899A206A90E900A92A08 /* AnimationBasicMD.md in Resources */,
+				869BB7B1206890EC00CD81E3 /* CALayerPropertyDemo.md in Resources */,
 				86373AA51C1073230093E29D /* Assets.xcassets in Resources */,
 				86B532AD200652D600BAF480 /* ViewBasicDemoMD.md in Resources */,
 				86E3C8DB200EFDCE00B658EF /* MDImage in Resources */,
 				862F17021F4BDC6400CDDE8A /* XXLaunch.storyboard in Resources */,
 				86562A1B204E896E00404898 /* LanguageDemoMD.md in Resources */,
 				86E3C8D7200E2AA800B658EF /* APNSDemo.md in Resources */,
+				860D9880205F68100016B94F /* UIViewAnimationDemo.md in Resources */,
+				869BB7B62068A6BC00CD81E3 /* CALayerToolsDemo.md in Resources */,
 				86AA6C232016E6CB00CF1971 /* EncodeDemo.md in Resources */,
 				86562A2C205048BA00404898 /* DrawingAdvance.md in Resources */,
 				86E2F01A204D9EFB004CE53F /* FilterDemo.md in Resources */,
+				8629C6EB2060AE5800F48866 /* ImplicitAnimationDemo.md in Resources */,
 				86B525F920454A8A00C6AB2F /* ViewTransformDemo.md in Resources */,
 				86B5260B2047AFB800C6AB2F /* GraphicsContextDemo.md in Resources */,
 			);
@@ -1421,6 +1537,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				86B142CD2041150700FD6D48 /* UIKitOverViewDemo.m in Sources */,
+				864F07C32060E901006053E3 /* CoreAnimationDemo.m in Sources */,
+				8621D64A205B5CBC007A3934 /* CALayerTransformDemo.m in Sources */,
+				860D987A205F60170016B94F /* ImageAnimation.m in Sources */,
 				86B5260C2047AFB800C6AB2F /* GraphicsContextDemo.m in Sources */,
 				86373A9A1C1073230093E29D /* main.m in Sources */,
 				86553A1920034C6D0091F726 /* XXXXCheckbox.m in Sources */,
@@ -1429,15 +1548,18 @@
 				860BC2DB1CD3649600AC633F /* XXToast.m in Sources */,
 				865539771FFCBA960091F726 /* XXXXBaseTheme.m in Sources */,
 				869EBA141CD35E6100FA75DB /* UIColor+XXExtension.m in Sources */,
+				86B797AB207208E8002DF455 /* MultiThreadDemo.m in Sources */,
 				865539E720034BF70091F726 /* FlexLayoutDemo.m in Sources */,
 				86B525F420450EC400C6AB2F /* ViewCoordinateDemo.m in Sources */,
 				86553A2F20046DFC0091F726 /* ThemeDemo.m in Sources */,
 				865539CB20030F740091F726 /* DemoMDController.m in Sources */,
 				865539E120034B1C0091F726 /* LinearLayoutDemoViewController.m in Sources */,
 				86E2F019204D9EFB004CE53F /* FilterDemo.m in Sources */,
+				869BB7B52068A6BC00CD81E3 /* CALayerToolsDemo.m in Sources */,
 				865539D820031BDA0091F726 /* FlexLayout.m in Sources */,
 				865539231FFCB7200091F726 /* ViewBasicDemo.m in Sources */,
 				86B52606204591F600C6AB2F /* DrawingBasicMD.m in Sources */,
+				86B797AD207208E8002DF455 /* NetworkDemo.m in Sources */,
 				86553A1120034C6D0091F726 /* XXXXLabel.m in Sources */,
 				86553A1A20034C6D0091F726 /* XXXXDefaultButton.m in Sources */,
 				86B526002045915E00C6AB2F /* UIImageDemo.m in Sources */,
@@ -1457,6 +1579,8 @@
 				860BC2D41CD3649600AC633F /* AdView.m in Sources */,
 				869EBA111CD358FA00FA75DB /* XXBaseModel.m in Sources */,
 				860BC2D61CD3649600AC633F /* UIPlaceHolderTextView.m in Sources */,
+				860D987C205F60170016B94F /* AnimationDemo.m in Sources */,
+				8629C6EC2060AE5800F48866 /* ImplicitAnimationDemo.m in Sources */,
 				86B525F820454A8A00C6AB2F /* ViewTransformDemo.m in Sources */,
 				86562A1E204E896E00404898 /* LanguageDemoMD.m in Sources */,
 				86562A2D205048BA00404898 /* DrawingAdvance.m in Sources */,
@@ -1470,6 +1594,7 @@
 				86B526012045915E00C6AB2F /* DrawingDemo.m in Sources */,
 				865539C02000149F0091F726 /* UIViewDemo.m in Sources */,
 				869EB9F41CD3578400FA75DB /* XXXXAppContext.m in Sources */,
+				8621D62B2058B01C007A3934 /* CALayerBasicDemo.m in Sources */,
 				86562A1D204E896E00404898 /* OCDemo.m in Sources */,
 				865539D720031BDA0091F726 /* FlexLinearLayout.m in Sources */,
 				865539161FFBEACE0091F726 /* DemoController.m in Sources */,
@@ -1495,11 +1620,14 @@
 				86553A2B2003769D0091F726 /* UIKITButtonDemo.m in Sources */,
 				86553A1820034C6D0091F726 /* XXXXTextButton.m in Sources */,
 				86553A0F20034C6D0091F726 /* XXXXHTMLLabel.m in Sources */,
+				86238999206A90E900A92A08 /* AnimationBasicMD.m in Sources */,
 				86AA6C222016E6CB00CF1971 /* EncodeDemo.m in Sources */,
+				860D9881205F68100016B94F /* UIViewAnimationDemo.m in Sources */,
 				865539B81FFFDB5E0091F726 /* ViewAppearance.m in Sources */,
 				869EBA411CD363D100FA75DB /* XXXXBaseViewController.m in Sources */,
 				86553A1020034C6D0091F726 /* XXXXDefaultLabel.m in Sources */,
 				86553A1520034C6D0091F726 /* XXXXSecondaryButton.m in Sources */,
+				869BB7B0206890EC00CD81E3 /* CALayerPropertyDemo.m in Sources */,
 				86562A22204E958900404898 /* NSScannerDemo.m in Sources */,
 				86562A27204ED48400404898 /* ImageBasicDemo.m in Sources */,
 				86562A1C204E896E00404898 /* LanguageDemo.m in Sources */,

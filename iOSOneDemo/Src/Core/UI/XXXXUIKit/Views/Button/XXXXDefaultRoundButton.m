@@ -13,7 +13,7 @@
 
 - (instancetype)initWithTheme:(XXXXAppTheme *)theme{
     if (self = [super initWithTheme:theme]) {
-        self.flex_layoutHeigh = 50;
+        self.flex_layoutHeight = 50;
         self.flex_layoutWidth = kAppDimension.screenWidth - 30;
         
         self.layer.cornerRadius = 3;

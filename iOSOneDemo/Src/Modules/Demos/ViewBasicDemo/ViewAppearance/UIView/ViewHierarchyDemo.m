@@ -6,6 +6,8 @@
 //  Copyright © 2018年 Kacha-Mobile. All rights reserved.
 //
 
+#define ABC @"1"
+
 #import "ViewHierarchyDemo.h"
 
 @interface ViewHierarchyDemo ()
@@ -63,7 +65,7 @@
     showBox.alignItems = FlexAlignSelf_center;
     
     UIView *view1 = [UIView new];
-    view1.flex_layoutHeigh = 100;
+    view1.flex_layoutHeight = 100;
     view1.flex_margin = @[@50,@30];
     view1.backgroundColor = XXXX_COLOR_HEX(0xff0000);
     [self addLabelOnView:view1 withText:@"view1"];
@@ -91,6 +93,7 @@
     [self addDescriptionOnView:showBox withText:@"在上面的示例中，View2是View1的subview，View3、View4是View2的subview。"];
     [self addButtonOnView:showBox withText:@"隐藏/显示view2" block:^(id btn) {
         view2.hidden = !view2.isHidden;
+        NSLog(@"ABC is ===> %@", ABC);
     }];
     
     [self addButtonOnView:showBox withText:@"toggle view2 clipsToBounds" block:^(id btn) {

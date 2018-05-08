@@ -5,7 +5,7 @@ target 'iOSOneDemo' do
   # 视图层{
         pod 'MJRefresh'      # 上下拉刷新
         pod 'DMPagerViewController'     # ViewPager
-        pod 'FDFullscreenPopGesture'    # 手势返回
+#        pod 'FDFullscreenPopGesture'    # 手势返回
         pod 'Masonry'                   # Masonry 界面约束编程
         pod 'SVProgressHUD'  # progressBar 等待进度圈
   # }

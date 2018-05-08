@@ -55,7 +55,7 @@
 {
     UIView *line = [UIView new];
     line.flex_alignSelf = FlexAlignSelf_stretch;
-    line.flex_layoutHeigh = XXXX_SIZE_LINE;
+    line.flex_layoutHeight = XXXX_SIZE_LINE;
     line.backgroundColor = kAppColor.divider;
     if (margin) {
         line.flex_margin = margin;
@@ -148,7 +148,8 @@
 
 - (void)onRightBarItemClicked:(id)sender {
     DemoMDController *mdController = [DemoMDController new];
-    mdController.demoName = [NSString stringWithFormat:@"%@.md",[self className]];
+    mdController.mdUrl = @"https://www.luochenxun.com/ios-0directory/";
+//    mdController.demoName = [NSString stringWithFormat:@"%@.md",[self className]];
     if ([ControllerManageService sharedInstance].splitViewController.collapsed) {
         [self.navigationController pushViewController:mdController animated:YES];
     } else {
@@ -169,23 +170,27 @@
         box.flexSize = size;
     }
     
-    box.layer.borderColor = [kAppColor.dividerDark CGColor];
-    box.layer.borderWidth = XXXX_SIZE_LINE;
-    box.layer.cornerRadius = 3;
+    UIView *borderBox = [UIView new];
+    borderBox.layer.borderColor = [kAppColor.dividerDark CGColor];
+    borderBox.layer.borderWidth = XXXX_SIZE_LINE;
+    borderBox.layer.cornerRadius = 6;
+    [box addSubview:borderBox];
+    [borderBox mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.bottom.right.equalTo(box);
+    }];
     
     XXXXLabel *titleLabel = [XXXXLabel labelWithType:XXXXLabelTypeDefault
-                                      text:nil font:kAppFont.h5 color:kAppColor.h1];
-    titleLabel.opaque = YES;
-    titleLabel.backgroundColor = [UIColor whiteColor];
+                                                text:nil font:kAppFont.h5 color:kAppColor.h1];
+    titleLabel.layer.backgroundColor = [UIColor whiteColor].CGColor;
     titleLabel.textAlignment = NSTextAlignmentCenter;
-    
+    titleLabel.text = title;
     [box addSubview:titleLabel];
     [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(150, 20));
+        make.size.mas_equalTo(CGSizeMake(titleLabel.flex_estimateWidthWithContent + 60, 20));
         make.top.equalTo(box).mas_offset(-10);
         make.centerX.equalTo(box);
     }];
-    titleLabel.text = title;
+    
     
     [box setFlexMargin:@[@15, @20]];
     [box setPadding:@[@15, @30]];

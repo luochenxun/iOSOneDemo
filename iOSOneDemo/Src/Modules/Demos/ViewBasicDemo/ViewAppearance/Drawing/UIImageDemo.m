@@ -69,7 +69,7 @@
     UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"earth"]];
     imgView.backgroundColor = [UIColor yellowColor];
     imgView.flex_alignSelf = FlexAlignSelf_stretch;
-    imgView.flex_layoutHeigh = 100;
+    imgView.flex_layoutHeight = 100;
     imgView.flex_margin = @[@50,@30];
     imgView.contentMode = UIViewContentModeScaleToFill;
     [contentModeBox flex_addSubview:imgView];
@@ -79,7 +79,7 @@
     imgView.backgroundColor = [UIColor yellowColor];
     imgView.clipsToBounds = YES;
     imgView.flex_alignSelf = FlexAlignSelf_stretch;
-    imgView.flex_layoutHeigh = 100;
+    imgView.flex_layoutHeight = 100;
     imgView.flex_margin = @[@50,@30];
     imgView.contentMode = UIViewContentModeScaleAspectFit;
     [contentModeBox flex_addSubview:imgView];
@@ -89,7 +89,7 @@
     imgView.backgroundColor = [UIColor yellowColor];
     imgView.clipsToBounds = YES;
     imgView.flex_alignSelf = FlexAlignSelf_stretch;
-    imgView.flex_layoutHeigh = 100;
+    imgView.flex_layoutHeight = 100;
     imgView.flex_margin = @[@50,@30];
     imgView.contentMode = UIViewContentModeScaleAspectFill;
     [contentModeBox flex_addSubview:imgView];
@@ -99,7 +99,7 @@
     imgView.backgroundColor = [UIColor yellowColor];
     imgView.clipsToBounds = YES;
     imgView.flex_alignSelf = FlexAlignSelf_stretch;
-    imgView.flex_layoutHeigh = 100;
+    imgView.flex_layoutHeight = 100;
     imgView.flex_margin = @[@50,@30];
     imgView.contentMode = UIViewContentModeRedraw;
     [contentModeBox flex_addSubview:imgView];
@@ -109,7 +109,7 @@
     imgView.backgroundColor = [UIColor yellowColor];
     imgView.clipsToBounds = YES;
     imgView.flex_alignSelf = FlexAlignSelf_stretch;
-    imgView.flex_layoutHeigh = 100;
+    imgView.flex_layoutHeight = 100;
     imgView.flex_margin = @[@50,@30];
     imgView.contentMode = UIViewContentModeCenter;
     [contentModeBox flex_addSubview:imgView];
@@ -118,7 +118,7 @@
     imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"earth"]];
     imgView.backgroundColor = [UIColor yellowColor];
     imgView.flex_alignSelf = FlexAlignSelf_stretch;
-    imgView.flex_layoutHeigh = 100;
+    imgView.flex_layoutHeight = 100;
     imgView.flex_margin = @[@50,@30];
     imgView.contentMode = UIViewContentModeCenter;
     [contentModeBox flex_addSubview:imgView];
@@ -133,7 +133,7 @@
     imgView = [[UIImageView alloc] initWithImage:img];
     imgView.backgroundColor = [UIColor yellowColor];
     imgView.flex_alignSelf = FlexAlignSelf_stretch;
-    imgView.flex_layoutHeigh = 100;
+    imgView.flex_layoutHeight = 100;
     imgView.flex_margin = @[@50,@30];
     imgView.contentMode = UIViewContentModeScaleToFill;
     [resizeableImgBox flex_addSubview:imgView];
@@ -144,7 +144,7 @@
     imgView = [[UIImageView alloc] initWithImage:img];
     imgView.backgroundColor = [UIColor yellowColor];
     imgView.flex_alignSelf = FlexAlignSelf_stretch;
-    imgView.flex_layoutHeigh = 100;
+    imgView.flex_layoutHeight = 100;
     imgView.flex_margin = @[@50,@30];
     imgView.contentMode = UIViewContentModeScaleToFill;
     [resizeableImgBox flex_addSubview:imgView];
@@ -155,7 +155,7 @@
     imgView = [[UIImageView alloc] initWithImage:img];
     imgView.backgroundColor = [UIColor yellowColor];
     imgView.flex_alignSelf = FlexAlignSelf_stretch;
-    imgView.flex_layoutHeigh = 100;
+    imgView.flex_layoutHeight = 100;
     imgView.flex_margin = @[@50,@30];
     imgView.contentMode = UIViewContentModeScaleToFill;
     [resizeableImgBox flex_addSubview:imgView];
@@ -166,7 +166,7 @@
     imgView = [[UIImageView alloc] initWithImage:img];
     imgView.backgroundColor = [UIColor yellowColor];
     imgView.flex_alignSelf = FlexAlignSelf_stretch;
-    imgView.flex_layoutHeigh = 100;
+    imgView.flex_layoutHeight = 100;
     imgView.flex_margin = @[@50,@30];
     imgView.contentMode = UIViewContentModeScaleToFill;
     [resizeableImgBox flex_addSubview:imgView];
@@ -179,7 +179,7 @@
     img = [UIImage imageNamed:@"rain"];
     imgView = [[UIImageView alloc] initWithImage:img];
     imgView.flex_alignSelf = FlexAlignSelf_stretch;
-    imgView.flex_layoutHeigh = 100;
+    imgView.flex_layoutHeight = 100;
     imgView.flex_margin = @[@50,@30];
     imgView.contentMode = UIViewContentModeScaleAspectFit;
     [renderModeBox flex_addSubview:imgView];
@@ -189,7 +189,7 @@
     img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     imgView = [[UIImageView alloc] initWithImage:img];
     imgView.flex_alignSelf = FlexAlignSelf_stretch;
-    imgView.flex_layoutHeigh = 100;
+    imgView.flex_layoutHeight = 100;
     imgView.flex_margin = @[@50,@30];
     imgView.contentMode = UIViewContentModeScaleAspectFit;
     [renderModeBox flex_addSubview:imgView];
@@ -200,7 +200,7 @@
     imgView = [[UIImageView alloc] initWithImage:img];
     imgView.tintColor = [UIColor yellowColor];
     imgView.flex_alignSelf = FlexAlignSelf_stretch;
-    imgView.flex_layoutHeigh = 100;
+    imgView.flex_layoutHeight = 100;
     imgView.flex_margin = @[@50,@30];
     imgView.contentMode = UIViewContentModeScaleAspectFit;
     [renderModeBox flex_addSubview:imgView];

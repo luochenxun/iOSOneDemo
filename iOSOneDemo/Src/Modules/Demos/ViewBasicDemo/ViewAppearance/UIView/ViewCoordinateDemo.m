@@ -6,6 +6,8 @@
 //  Copyright © 2018年 Kacha-Mobile. All rights reserved.
 //
 
+#define ABC @"2"
+
 #import "ViewCoordinateDemo.h"
 
 @interface ViewCoordinateDemo ()
@@ -65,7 +67,7 @@
     showBox.alignItems = FlexAlignSelf_center;
     
     UIView *stage1View = [UIView new];
-    stage1View.flex_layoutHeigh = 200;
+    stage1View.flex_layoutHeight = 200;
     stage1View.flex_margin = @[@50,@30];
     stage1View.backgroundColor = [UIColor yellowColor];
     [self addLabelOnView:stage1View withText:@"stage1"];
@@ -88,7 +90,7 @@
     
 //    Bounds 与 Center改变
     UIView *stage2View = [UIView new];
-    stage2View.flex_layoutHeigh = 200;
+    stage2View.flex_layoutHeight = 200;
     stage2View.flex_margin = @[@50,@30];
     stage2View.backgroundColor = [UIColor yellowColor];
     [self addLabelOnView:stage2View withText:@"stage2"];
@@ -107,6 +109,7 @@
     [view2 addSubview:view3];
     
     [self addButtonOnView:showBox withText:@"改变view3的bounds的size" block:^(id btn) {
+        NSLog(@"ABC is ===> %@", ABC);
         if (view3.bounds.size.width < view2.bounds.size.width) {
             CGRect r = view3.bounds;
             r.size.height += 40;

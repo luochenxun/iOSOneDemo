@@ -60,26 +60,6 @@
 }
 
 - (void)initUI {
-    //-------    Image 总述
-    FlexLinearLayout *imageBox = [self addDemoBoxWithTitle:@" Image总述 "];
-    imageBox.alignItems = FlexAlignItems_center;
-    
-    UIImage *tempImage = [UIImage imageNamed:@"rain"];
-    CFDataRef imageData = CGDataProviderCopyData(CGImageGetDataProvider(tempImage.CGImage));
-    NSData *imageNSData = (__bridge_transfer NSData*)imageData;
-    NSString *imageStr = [NSDataHelper convertDataToHexStr:imageNSData];
-    NSMutableString *fetchImageStr = [NSMutableString stringWithCapacity:10];
-//    for (NSUInteger i = 0,j = 0; i < imageStr.length; i++) {
-//        if (<#condition#>) {
-//            <#statements#>
-//        }
-//    }
-//    imagens
-    XXXXLabel *imageDataLabel = [self addDescriptionOnView:imageBox withText:[NSString stringWithFormat:@"%@",imageData]];
-    imageDataLabel.lineBreakMode = NSLineBreakByTruncatingTail;
-    imageDataLabel.flex_layoutHeigh = 100;
-    
-    
     //-------    CGImage
     FlexLinearLayout *cgImgBox = [self addDemoBoxWithTitle:@" CGImage "];
     cgImgBox.alignItems = FlexAlignItems_center;
@@ -185,7 +165,7 @@
     UIImageView *imageView = [[UIImageView alloc] init];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     imageView.flex_alignSelf = FlexAlignSelf_stretch;
-    imageView.flex_layoutHeigh = 200;
+    imageView.flex_layoutHeight = 200;
     [snapshotBox flex_addSubview:imageView];
     [self addButtonOnView:snapshotBox withText:@"截个图" block:^(id btn) {
         UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
@@ -203,7 +183,7 @@
     imageView = [[UIImageView alloc] init];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     imageView.flex_alignSelf = FlexAlignSelf_stretch;
-    imageView.flex_layoutHeigh = 200;
+    imageView.flex_layoutHeight = 200;
     [snapshotBox flex_addSubview:imageView];
     weakify(self);
     [self addButtonOnView:snapshotBox withText:@"截个图" block:^(id btn) {
@@ -219,7 +199,7 @@
     // show the image use a imageview
     UIView *snapViewFrame = [[UIView alloc] init];
     snapViewFrame.flex_alignSelf = FlexAlignSelf_stretch;
-    snapViewFrame.flex_layoutHeigh = 200;
+    snapViewFrame.flex_layoutHeight = 200;
     [snapshotBox flex_addSubview:snapViewFrame];
     [self addButtonOnView:snapshotBox withText:@"截个图" block:^(id btn) {
         strongify(self);

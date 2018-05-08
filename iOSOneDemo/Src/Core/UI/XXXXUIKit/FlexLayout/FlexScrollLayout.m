@@ -218,7 +218,7 @@
         left = _x + viewItem.flex_marginLeft;
         //        top = _y + viewItem.flex_marginTop;
         width = viewItem.flex_layoutWidth;
-        heigh = viewItem.flex_layoutHeigh;
+        heigh = viewItem.flex_layoutHeight;
         
         // Adjust by AlignItems
 #pragma mark Adjust by AlignItems<row>
@@ -228,11 +228,11 @@
                 break;
             }
             case FlexAlignItems_flexEnd: {
-                top = self.layoutHeigh - viewItem.flex_layoutHeigh - viewItem.flex_marginBottom - self.paddingBottom;
+                top = self.layoutHeigh - viewItem.flex_layoutHeight - viewItem.flex_marginBottom - self.paddingBottom;
                 break;
             }
             case FlexAlignItems_center: {
-                top = (self.layoutHeigh - viewItem.flex_layoutHeigh) / 2 + viewItem.flex_marginTop;
+                top = (self.layoutHeigh - viewItem.flex_layoutHeight) / 2 + viewItem.flex_marginTop;
                 break;
             }
             case FlexAlignItems_stretch: {
@@ -253,11 +253,11 @@
                 break;
             }
             case FlexAlignSelf_flexEnd: {
-                top = self.layoutHeigh - viewItem.flex_layoutHeigh - viewItem.flex_marginBottom - self.paddingBottom;
+                top = self.layoutHeigh - viewItem.flex_layoutHeight - viewItem.flex_marginBottom - self.paddingBottom;
                 break;
             }
             case FlexAlignSelf_center: {
-                top = (self.layoutHeigh - viewItem.flex_layoutHeigh) / 2;
+                top = (self.layoutHeigh - viewItem.flex_layoutHeight) / 2;
                 break;
             }
             case FlexAlignSelf_stretch: {
@@ -371,7 +371,7 @@
         // normal alignment
         top = _y + viewItem.flex_marginTop;
         width = viewItem.flex_layoutWidth;
-        heigh = viewItem.flex_layoutHeigh;
+        heigh = viewItem.flex_layoutHeight;
         
         // Adjust by AlignItems
 #pragma mark Adjust by AlignItems<Column>
@@ -425,7 +425,7 @@
         if ([viewItem isKindOfClass:[UILabel class]]) {
             CGFloat viewItemTempWidth = viewItem.flex_layoutWidth;
             viewItem.flex_layoutWidth = width;
-            heigh = viewItem.flex_layoutHeigh;
+            heigh = viewItem.flex_layoutHeight;
             // 更新父容器
             if (roundf(viewItemTempWidth) != roundf(width)) {
                 [FlexLayout updateRootLayout:viewItem];
@@ -446,22 +446,22 @@
 #pragma mark Adjust by JustityContent-spacePadding<Column>
         if (_spacePadding != 0 && self.justityContent == FlexJustityContent_spaceBetween) {
             top = _y; // spaceBetween do not consider the mergin on the flexDirection,return the normal scroll y back to origin value
-            _y = _y + _spacePadding + viewItem.flex_layoutHeigh;
+            _y = _y + _spacePadding + viewItem.flex_layoutHeight;
         }else if (_spacePadding != 0 && self.justityContent == FlexJustityContent_spaceAround) {
             top = _y + _spacePadding;
-            _y = _y + _spacePadding * 2 + viewItem.flex_layoutHeigh;
+            _y = _y + _spacePadding * 2 + viewItem.flex_layoutHeight;
         }else if (_spacePadding != 0 && self.justityContent == FlexJustityContent_spaceAverage) {
             top = _y + _spacePadding;
-            _y = _y + _spacePadding + viewItem.flex_layoutHeigh;
+            _y = _y + _spacePadding + viewItem.flex_layoutHeight;
         }else if ( viewItem == [self lastVisibleSubView] && self.justityContent == FlexJustityContent_stretch && _y < self.layoutHeigh) {
             heigh = self.layoutHeigh - top - viewItem.flex_marginBottom - self.paddingBottom;
-            _y += viewItem.flex_totalHeigh;
+            _y += viewItem.flex_totalHeight;
         }else if ( _spacePadding > 0 && self.justityContent == FlexJustityContent_flex ) {
             heigh = _spacePadding * (viewItem.flex_flex / totalFlex);
             top = _y + viewItem.flex_marginTop;
             _y += (viewItem.flex_marginTop + heigh + viewItem.flex_marginBottom);
         } else {
-            _y += viewItem.flex_totalHeigh;
+            _y += viewItem.flex_totalHeight;
         }
         
         // set frame finally
@@ -663,8 +663,8 @@
 
 - (CGFloat)layoutHeigh
 {
-    if (self.flex_layoutHeigh > 0) {
-        return self.flex_layoutHeigh;
+    if (self.flex_layoutHeight > 0) {
+        return self.flex_layoutHeight;
     }
     else if (self.frame.size.height > 0) {
         return self.frame.size.height;
@@ -706,7 +706,7 @@
         if (viewItem.hidden == YES) {
             continue;
         }
-        totalHeigh += viewItem.flex_totalHeigh;
+        totalHeigh += viewItem.flex_totalHeight;
     }
     return totalHeigh;
 }
@@ -766,7 +766,7 @@
         if (viewItem.hidden == YES) {
             continue;
         }
-        totalHeigh += viewItem.flex_layoutHeigh;
+        totalHeigh += viewItem.flex_layoutHeight;
     }
     return totalHeigh;
 }

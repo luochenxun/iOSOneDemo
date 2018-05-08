@@ -79,7 +79,7 @@
 //    
 //    //---------  addView and removeView --------
 //    FlexScrollLayout *addViewLayout = [FlexScrollLayout new];
-//    addViewLayout.flex_layoutHeigh = 50;
+//    addViewLayout.flex_layoutHeight = 50;
 //    addViewLayout.justityContent = FlexJustityContent_spaceAround;
 //    addViewLayout.alignItems = FlexAlignItems_center;
 //    addViewLayout.backgroundColor = [UIColor yellowColor];
@@ -121,7 +121,7 @@
 //    [_operationAreaLayout flex_addSubview:tips];
 //    
 //    FlexScrollLayout *flexDirectionLayout = [FlexScrollLayout new];
-//    flexDirectionLayout.flex_layoutHeigh = 50;
+//    flexDirectionLayout.flex_layoutHeight = 50;
 //    flexDirectionLayout.alignItems = FlexAlignItems_center;
 //    flexDirectionLayout.flex_alignSelf = FlexAlignSelf_stretch;
 //    flexDirectionLayout.backgroundColor = [UIColor yellowColor];
@@ -155,7 +155,7 @@
 //    [_operationAreaLayout flex_addSubview:tips];
 //    
 //    FlexScrollLayout *JustityContentLayout = [FlexScrollLayout new];
-//    JustityContentLayout.flex_layoutHeigh = 50;
+//    JustityContentLayout.flex_layoutHeight = 50;
 //    JustityContentLayout.alignItems = FlexAlignItems_center;
 //    JustityContentLayout.flex_alignSelf = FlexAlignSelf_stretch;
 //    JustityContentLayout.backgroundColor = [UIColor yellowColor];
@@ -243,7 +243,7 @@
 //    [_operationAreaLayout flex_addSubview:tips];
 //    
 //    FlexScrollLayout *alignItemsLayout = [FlexScrollLayout new];
-//    alignItemsLayout.flex_layoutHeigh = 50;
+//    alignItemsLayout.flex_layoutHeight = 50;
 //    alignItemsLayout.alignItems = FlexAlignItems_center;
 //    alignItemsLayout.flex_alignSelf = FlexAlignSelf_stretch;
 //    alignItemsLayout.backgroundColor = [UIColor yellowColor];

@@ -71,9 +71,9 @@
                              OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-#define k_flex_layoutHeigh @"k_flex_layoutHeigh"
-- (CGFloat)flex_layoutHeigh{
-    NSNumber *obj = objc_getAssociatedObject(self, k_flex_layoutHeigh);
+#define k_flex_layoutHeight @"k_flex_layoutHeight"
+- (CGFloat)flex_layoutHeight{
+    NSNumber *obj = objc_getAssociatedObject(self, k_flex_layoutHeight);
     if (obj && [obj isKindOfClass:[NSNumber class]]) {
         return [obj floatValue];
     }
@@ -110,8 +110,8 @@
     return 0;
 }
 
-- (void)setFlex_layoutHeigh:(CGFloat)flex_layoutHeigh{
-    objc_setAssociatedObject(self, k_flex_layoutHeigh, @(flex_layoutHeigh),
+- (void)setFlex_layoutHeight:(CGFloat)flex_layoutHeight{
+    objc_setAssociatedObject(self, k_flex_layoutHeight, @(flex_layoutHeight),
                              OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
 }
@@ -243,17 +243,17 @@
     return self.flex_layoutWidth + self.flex_marginLeft + self.flex_marginRight;
 }
 
-- (CGFloat)flex_totalHeigh{
-    return self.flex_layoutHeigh + self.flex_marginTop + self.flex_marginBottom;
+- (CGFloat)flex_totalHeight{
+    return self.flex_layoutHeight + self.flex_marginTop + self.flex_marginBottom;
 }
 
 - (void)setFlexSize:(CGSize)aSize{
     [self setFlex_layoutWidth:aSize.width];
-    [self setFlex_layoutHeigh:aSize.height];
+    [self setFlex_layoutHeight:aSize.height];
 }
 
 - (CGSize)flexSize {
-    return CGSizeMake(self.flex_layoutWidth, self.flex_layoutHeigh);
+    return CGSizeMake(self.flex_layoutWidth, self.flex_layoutHeight);
 }
 
 - (void)setFlexMargin:(NSArray *)marginValue{
