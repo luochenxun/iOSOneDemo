@@ -1,10 +1,9 @@
 //
-//  NSArray+MASShorthandAdditions.h
-//  Masonry
+// NSArray+MASShorthandAdditions.h
+// iOSOneDemo
 //
-//  Created by Jonas Budelmann on 22/07/13.
-//  Copyright (c) 2013 Jonas Budelmann. All rights reserved.
-//
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 
 #import "NSArray+MASAdditions.h"
 

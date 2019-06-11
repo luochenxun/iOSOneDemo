@@ -1,3 +1,9 @@
+//
+// NSData+ImageContentType.m
+// iOSOneDemo
+//
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 /*
  * This file is part of the SDWebImage package.
  * (c) Olivier Poitrey <rs@dailymotion.com>
@@ -14,7 +20,6 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #endif
 
-// Currently Image/IO does not support WebP
 #define kSDUTTypeWebP ((__bridge CFStringRef)@"public.webp")
 // AVFileTypeHEIC is defined in AVFoundation via iOS 11, we use this without import AVFoundation
 #define kSDUTTypeHEIC ((__bridge CFStringRef)@"public.heic")

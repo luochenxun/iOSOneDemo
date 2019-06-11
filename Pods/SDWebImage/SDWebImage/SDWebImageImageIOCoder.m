@@ -1,3 +1,9 @@
+//
+// SDWebImageImageIOCoder.m
+// iOSOneDemo
+//
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 /*
  * This file is part of the SDWebImage package.
  * (c) Olivier Poitrey <rs@dailymotion.com>
@@ -68,7 +74,6 @@ static const CGFloat kDestSeemOverlap = 2.0f;   // the numbers of pixels to over
 - (BOOL)canDecodeFromData:(nullable NSData *)data {
     switch ([NSData sd_imageFormatForImageData:data]) {
         case SDImageFormatWebP:
-            // Do not support WebP decoding
             return NO;
         case SDImageFormatHEIC:
             // Check HEIC decoding compatibility

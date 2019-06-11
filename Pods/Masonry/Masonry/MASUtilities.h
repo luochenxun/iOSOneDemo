@@ -1,10 +1,9 @@
 //
-//  MASUtilities.h
-//  Masonry
+// MASUtilities.h
+// iOSOneDemo
 //
-//  Created by Jonas Budelmann on 19/08/13.
-//  Copyright (c) 2013 Jonas Budelmann. All rights reserved.
-//
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 
 #import <Foundation/Foundation.h>
 

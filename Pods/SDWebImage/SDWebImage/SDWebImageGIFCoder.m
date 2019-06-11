@@ -1,3 +1,9 @@
+//
+// SDWebImageGIFCoder.m
+// iOSOneDemo
+//
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 /*
  * This file is part of the SDWebImage package.
  * (c) Olivier Poitrey <rs@dailymotion.com>
@@ -108,10 +114,6 @@
         }
     }
     
-    // Many annoying ads specify a 0 duration to make an image flash as quickly as possible.
-    // We follow Firefox's behavior and use a duration of 100 ms for any frames that specify
-    // a duration of <= 10 ms. See <rdar://problem/7689300> and <http://webkit.org/b/36082>
-    // for more information.
     
     if (frameDuration < 0.011f) {
         frameDuration = 0.100f;

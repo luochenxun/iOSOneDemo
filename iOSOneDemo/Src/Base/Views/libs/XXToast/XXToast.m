@@ -1,3 +1,9 @@
+//
+// XXToast.m
+// iOSOneDemo
+//
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 /*
 
 XXToast.m
@@ -133,7 +139,6 @@ static XXToastSettings *sharedSettings = nil;
 	
 	CGPoint point = CGPointZero;
 	
-	// Set correct orientation/location regarding device orientation
 	UIInterfaceOrientation orientation = (UIInterfaceOrientation)[[UIApplication sharedApplication] statusBarOrientation];
 	double version = [[[UIDevice currentDevice] systemVersion] doubleValue];
 	switch (orientation) {

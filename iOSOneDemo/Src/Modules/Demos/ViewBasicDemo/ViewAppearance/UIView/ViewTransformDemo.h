@@ -1,11 +1,9 @@
 //
-//  ViewTransformDemo.h
-//  iOSOneDemo
+// ViewTransformDemo.h
+// iOSOneDemo
 //
-//  Created by luochenxun on 2018/1/6.
-//  Copyright © 2018年 Kacha-Mobile. All rights reserved.
-//
-//    View Transform Demo
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 
 
 #import "DemoController.h"

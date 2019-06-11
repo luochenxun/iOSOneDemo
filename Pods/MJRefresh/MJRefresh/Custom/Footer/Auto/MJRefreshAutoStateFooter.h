@@ -1,10 +1,9 @@
 //
-//  MJRefreshAutoStateFooter.h
-//  MJRefreshExample
+// MJRefreshAutoStateFooter.h
+// iOSOneDemo
 //
-//  Created by MJ Lee on 15/6/13.
-//  Copyright © 2015年 小码哥. All rights reserved.
-//
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 
 #import "MJRefreshAutoFooter.h"
 

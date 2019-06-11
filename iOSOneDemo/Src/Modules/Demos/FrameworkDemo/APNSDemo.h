@@ -1,12 +1,9 @@
 //
-//  APNSDemo.h
-//  iOSOneDemo
+// APNSDemo.h
+// iOSOneDemo
 //
-//  Created by luochenxun on 2018/1/10.
-//  Copyright © 2018年 Kacha-Mobile. All rights reserved.
-//
-//
-//    推送 Demo
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 
 @interface APNSDemo : DemoController  <DemoProtocol>
 

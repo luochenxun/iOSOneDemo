@@ -1,9 +1,9 @@
 //
-//  MASConstraint.m
-//  Masonry
+// MASConstraint.m
+// iOSOneDemo
 //
-//  Created by Nick Tymchenko on 1/20/14.
-//
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 
 #import "MASConstraint.h"
 #import "MASConstraint+Private.h"

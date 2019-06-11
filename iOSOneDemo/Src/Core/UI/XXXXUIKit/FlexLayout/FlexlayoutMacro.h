@@ -1,10 +1,9 @@
 //
-//  FlexlayoutMacro.h
-//  FlexLayout
+// FlexlayoutMacro.h
+// iOSOneDemo
 //
-//  Created by luochenxun on 16/5/10.
-//  Copyright © 2016年 luochenxun. All rights reserved.
-//
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 
 //  The main-properties of FlexLayout
 //

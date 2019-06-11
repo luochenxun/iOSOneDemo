@@ -1,10 +1,9 @@
 //
-//  XXXXAppContext.h
-//  jiayoubao
+// XXXXAppContext.h
+// iOSOneDemo
 //
-//  Created by luochenxun on 16/4/22.
-//  Copyright © 2016年 jtjr99. All rights reserved.
-//
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 
 //  应用全局对象运行环境。
 //  单实例模型，生命周期为应用程序运行期间整个生命周期。

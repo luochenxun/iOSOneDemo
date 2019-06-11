@@ -1,3 +1,9 @@
+//
+// SDWebImageManager.m
+// iOSOneDemo
+//
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 /*
  * This file is part of the SDWebImage package.
  * (c) Olivier Poitrey <rs@dailymotion.com>
@@ -78,7 +84,6 @@
     BOOL isInMemoryCache = ([self.imageCache imageFromMemoryCacheForKey:key] != nil);
     
     if (isInMemoryCache) {
-        // making sure we call the completion block on the main queue
         dispatch_async(dispatch_get_main_queue(), ^{
             if (completionBlock) {
                 completionBlock(YES);

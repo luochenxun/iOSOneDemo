@@ -1,10 +1,9 @@
 //
-//  NSArray+MASAdditions.m
-//  
+// NSArray+MASAdditions.m
+// iOSOneDemo
 //
-//  Created by Daniel Hammond on 11/26/13.
-//
-//
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 
 #import "NSArray+MASAdditions.h"
 #import "View+MASAdditions.h"

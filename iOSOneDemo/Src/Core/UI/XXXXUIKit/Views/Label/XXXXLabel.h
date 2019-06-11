@@ -1,18 +1,9 @@
 //
-//  XXXXLabel.h
-//  jiayoubao
+// XXXXLabel.h
+// iOSOneDemo
 //
-//  Created by luochenxun on 2017/6/28.
-//  Copyright © 2017年 jiayoubao. All rights reserved.
-//
-//    Label 套件
-//
-//    Usage：
-//    XXXXLabel *label = [XXXXLabel labelWithType:XXXXLabelTypeDefault
-//                                       text:@"tet"
-//                                       font:kAppTheme.fontStyle.h5
-//                                      color:kAppTheme.colorStyle.h2];
-//    label.multipleOfLineSpace = 1.0; // 指定1倍行间距
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 
 
 #import <UIKit/UIKit.h>

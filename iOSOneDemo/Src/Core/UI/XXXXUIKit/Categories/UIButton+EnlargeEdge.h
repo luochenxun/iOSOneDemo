@@ -1,10 +1,9 @@
 //
-//  UIButton+EnlargeEdge.h
-//  jiayoubao
+// UIButton+EnlargeEdge.h
+// iOSOneDemo
 //
-//  Created by yuanzhiyun on 14-8-1.
-//  Copyright (c) 2014年 jtjr99. All rights reserved.
-//
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 
 #import <UIKit/UIKit.h>
 

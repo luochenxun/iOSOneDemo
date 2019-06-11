@@ -1,3 +1,9 @@
+//
+// UIView+WebCacheOperation.m
+// iOSOneDemo
+//
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 /*
  * This file is part of the SDWebImage package.
  * (c) Olivier Poitrey <rs@dailymotion.com>
@@ -14,8 +20,6 @@
 
 static char loadOperationKey;
 
-// key is copy, value is weak because operation instance is retained by SDWebImageManager's runningOperations property
-// we should use lock to keep thread-safe because these method may not be acessed from main queue
 typedef NSMapTable<NSString *, id<SDWebImageOperation>> SDOperationsDictionary;
 
 @implementation UIView (WebCacheOperation)

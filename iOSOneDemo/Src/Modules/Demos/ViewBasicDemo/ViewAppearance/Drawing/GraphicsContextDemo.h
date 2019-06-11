@@ -1,11 +1,9 @@
 //
-//  GraphicsContextDemo.h
-//  iOSOneDemo
+// GraphicsContextDemo.h
+// iOSOneDemo
 //
-//  Created by luochenxun on 2018/1/6.
-//  Copyright © 2018年 Kacha-Mobile. All rights reserved.
-//
-//    图像上下文（绘图画布）
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 
 
 #import "DemoController.h"

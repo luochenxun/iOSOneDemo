@@ -1,14 +1,7 @@
-////
-////  ScrollLayoutDemoViewController.h
-////  XXFlexLayout
-////
-////  Created by luochenxun on 16/5/11.
-////  Copyright © 2016年 luochenxun. All rights reserved.
-////
 //
-//#import <UIKit/UIKit.h>
+// ScrollLayoutDemoViewController.h
+// iOSOneDemo
 //
-//@interface ScrollLayoutDemoViewController : UIViewController
-//
-//@end
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 

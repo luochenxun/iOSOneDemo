@@ -1,10 +1,9 @@
 //
-//  TestService.m
-//  XXXX
+// TestService.m
+// iOSOneDemo
 //
-//  Created by luochenxun on 2017/8/29.
-//  Copyright © 2017年 Kacha-Mobile. All rights reserved.
-//
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 
 #import "TestService.h"
 

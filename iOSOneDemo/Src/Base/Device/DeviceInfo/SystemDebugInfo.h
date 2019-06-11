@@ -1,10 +1,9 @@
 //
-//  SystemDebugInfo.h
-//  kidme
+// SystemDebugInfo.h
+// iOSOneDemo
 //
-//  Created by luochenxun on 15-04-28.
-//  Copyright (c) 2015年 kacha-mobile. All rights reserved.
-//
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 
 #ifndef SystemDebugInfo_h
 #define SystemDebugInfo_h

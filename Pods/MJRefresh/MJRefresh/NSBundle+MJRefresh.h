@@ -1,10 +1,9 @@
 //
-//  NSBundle+MJRefresh.h
-//  MJRefreshExample
+// NSBundle+MJRefresh.h
+// iOSOneDemo
 //
-//  Created by MJ Lee on 16/6/13.
-//  Copyright © 2016年 小码哥. All rights reserved.
-//
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 
 #import <UIKit/UIKit.h>
 

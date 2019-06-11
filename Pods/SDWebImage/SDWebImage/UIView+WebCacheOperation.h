@@ -1,3 +1,9 @@
+//
+// UIView+WebCacheOperation.h
+// iOSOneDemo
+//
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 /*
  * This file is part of the SDWebImage package.
  * (c) Olivier Poitrey <rs@dailymotion.com>
@@ -12,8 +18,6 @@
 
 #import "SDWebImageManager.h"
 
-// These methods are used to support canceling for UIView image loading, it's designed to be used internal but not external.
-// All the stored operations are weak, so it will be dalloced after image loading finished. If you need to store operations, use your own class to keep a strong reference for them.
 @interface UIView (WebCacheOperation)
 
 /**

@@ -1,10 +1,9 @@
 //
-//  SystemInfo.h
-//  WishBid
+// SystemInfo.h
+// iOSOneDemo
 //
-//  Created by  on 13-10-26.
-//  Copyright (c) 2013年 __MyCompanyName__. All rights reserved.
-//
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 
 #ifndef DEVICEINFO_FOR_IOS
 #define DEVICEINFO_FOR_IOS

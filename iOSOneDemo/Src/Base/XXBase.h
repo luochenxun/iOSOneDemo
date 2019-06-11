@@ -1,10 +1,9 @@
 //
-//  XXBase.h
-//  XXXX
+// XXBase.h
+// iOSOneDemo
 //
-//  Created by luochenxun on 16/4/29.
-//  Copyright © 2016年 Kacha-Mobile. All rights reserved.
-//
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 
 #ifndef XXBase_h
 #define XXBase_h

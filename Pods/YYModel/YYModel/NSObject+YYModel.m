@@ -1,13 +1,9 @@
 //
-//  NSObject+YYModel.m
-//  YYModel <https://github.com/ibireme/YYModel>
+// NSObject+YYModel.m
+// iOSOneDemo
 //
-//  Created by ibireme on 15/5/10.
-//  Copyright (c) 2015 ibireme.
-//
-//  This source code is licensed under the MIT-style license found in the
-//  LICENSE file in the root directory of this source tree.
-//
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 
 #import "NSObject+YYModel.h"
 #import "YYClassInfo.h"

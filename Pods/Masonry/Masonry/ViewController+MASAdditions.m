@@ -1,10 +1,9 @@
 //
-//  UIViewController+MASAdditions.m
-//  Masonry
+// ViewController+MASAdditions.m
+// iOSOneDemo
 //
-//  Created by Craig Siemens on 2015-06-23.
-//
-//
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 
 #import "ViewController+MASAdditions.h"
 

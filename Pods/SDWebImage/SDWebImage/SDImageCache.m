@@ -1,3 +1,9 @@
+//
+// SDImageCache.m
+// iOSOneDemo
+//
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 /*
  * This file is part of the SDWebImage package.
  * (c) Olivier Poitrey <rs@dailymotion.com>
@@ -22,7 +28,6 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
 #endif
 }
 
-// A memory cache which auto purge the cache on memory warning and support weak cache.
 @interface SDMemoryCache <KeyType, ObjectType> : NSCache <KeyType, ObjectType>
 
 @end

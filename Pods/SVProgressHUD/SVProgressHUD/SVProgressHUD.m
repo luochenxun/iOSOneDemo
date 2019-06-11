@@ -1,9 +1,9 @@
 //
-//  SVProgressHUD.h
-//  SVProgressHUD, https://github.com/SVProgressHUD/SVProgressHUD
+// SVProgressHUD.m
+// iOSOneDemo
 //
-//  Copyright (c) 2011-2018 Sam Vermette and contributors. All rights reserved.
-//
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 
 #if !__has_feature(objc_arc)
 #error SVProgressHUD is ARC only. Either turn on ARC for the project or use -fobjc-arc flag

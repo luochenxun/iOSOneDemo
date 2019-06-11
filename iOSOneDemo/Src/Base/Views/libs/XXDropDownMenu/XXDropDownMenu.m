@@ -1,10 +1,9 @@
 //
-//  XXDropDownMenu.m
-//  XXDropDownMenuDemo
+// XXDropDownMenu.m
+// iOSOneDemo
 //
-//  Created by weizhou on 9/26/14.
-//  Copyright (c) 2014 fengweizhou. All rights reserved.
-//
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 
 #import "XXDropDownMenu.h"
 

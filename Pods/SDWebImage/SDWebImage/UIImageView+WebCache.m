@@ -1,3 +1,9 @@
+//
+// UIImageView+WebCache.m
+// iOSOneDemo
+//
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 /*
  * This file is part of the SDWebImage package.
  * (c) Olivier Poitrey <rs@dailymotion.com>
@@ -86,10 +92,6 @@
                         currentImages = [[NSMutableArray alloc] init];
                     }
                     
-                    // We know what index objects should be at when they are returned so
-                    // we will put the object at the index, filling any empty indexes
-                    // with the image that was returned too "early". These images will
-                    // be overwritten. (does not require additional sorting datastructure)
                     while ([currentImages count] < idx) {
                         [currentImages addObject:image];
                     }

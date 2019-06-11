@@ -1,10 +1,9 @@
 //
-//  AdView.m
-//  广告循环滚动效果
+// AdView.m
+// iOSOneDemo
 //
-//  Created by QzydeMac on 14/12/24.
-//  Copyright (c) 2014年 Qzy. All rights reserved.
-//
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 
 //
 //  AdScrollView.m

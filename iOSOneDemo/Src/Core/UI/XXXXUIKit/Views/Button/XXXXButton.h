@@ -1,20 +1,9 @@
 //
-//  XXXXButton.h
-//  jiayoubao
+// XXXXButton.h
+// iOSOneDemo
 //
-//  Created by luochenxun on 2017/6/23.
-//  Copyright © 2017年 jiayoubao. All rights reserved.
-//
-//  按钮套件
-//
-//  Usage:
-//
-//    XXXXButton * button = [XXXXButton buttonWithType:XXXXButtonTypeDefault
-//                                            text:@"标题"];
-//    [button onPressBlock:^(id btn) {
-//        // do some logic
-//    }];
-//    button.flex_layoutWidth = 300; // 设置按钮宽（长是固定的）
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 
 
 #import <UIKit/UIKit.h>

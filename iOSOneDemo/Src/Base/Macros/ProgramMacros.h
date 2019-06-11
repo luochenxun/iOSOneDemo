@@ -1,10 +1,9 @@
 //
-//  ProgramDesignHeader.h
+// ProgramMacros.h
+// iOSOneDemo
 //
-//  Created by luochenxun on 15/5/23.
-//  Copyright (c) 2015年 kacha-mobile. All rights reserved.
-//
-//  为编程方便提供的宏
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 
 #ifndef app_ProgramDesignHeader_h
 #define app_ProgramDesignHeader_h

@@ -1,10 +1,9 @@
 //
-//  LLBlockButton.h
-//  kidme
+// XXBlockButton.h
+// iOSOneDemo
 //
-//  Created by luochenxun on 15/8/12.
-//  Copyright (c) 2015年 kacha-mobile. All rights reserved.
-//
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 
 #import <UIKit/UIKit.h>
 

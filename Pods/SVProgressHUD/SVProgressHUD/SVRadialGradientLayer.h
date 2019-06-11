@@ -1,9 +1,9 @@
 //
-//  SVRadialGradientLayer.h
-//  SVProgressHUD, https://github.com/SVProgressHUD/SVProgressHUD
+// SVRadialGradientLayer.h
+// iOSOneDemo
 //
-//  Copyright (c) 2014-2018 Tobias Tiemerding. All rights reserved.
-//
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 
 #import <QuartzCore/QuartzCore.h>
 

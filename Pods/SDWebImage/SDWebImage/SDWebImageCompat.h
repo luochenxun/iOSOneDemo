@@ -1,3 +1,9 @@
+//
+// SDWebImageCompat.h
+// iOSOneDemo
+//
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 /*
  * This file is part of the SDWebImage package.
  * (c) Olivier Poitrey <rs@dailymotion.com>
@@ -13,9 +19,6 @@
     #error SDWebImage does not support Objective-C Garbage Collection
 #endif
 
-// Apple's defines from TargetConditionals.h are a bit weird.
-// Seems like TARGET_OS_MAC is always defined (on all platforms).
-// To determine if we are running on OSX, we can only rely on TARGET_OS_IPHONE=0 and all the other platforms
 #if !TARGET_OS_IPHONE && !TARGET_OS_IOS && !TARGET_OS_TV && !TARGET_OS_WATCH
     #define SD_MAC 1
 #else

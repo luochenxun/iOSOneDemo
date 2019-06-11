@@ -1,10 +1,9 @@
 //
-//  MASCompositeConstraint.m
-//  Masonry
+// MASCompositeConstraint.m
+// iOSOneDemo
 //
-//  Created by Jonas Budelmann on 21/07/13.
-//  Copyright (c) 2013 cloudling. All rights reserved.
-//
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 
 #import "MASCompositeConstraint.h"
 #import "MASConstraint+Private.h"

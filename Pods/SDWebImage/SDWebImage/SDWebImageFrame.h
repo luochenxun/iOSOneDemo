@@ -1,3 +1,9 @@
+//
+// SDWebImageFrame.h
+// iOSOneDemo
+//
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 /*
  * This file is part of the SDWebImage package.
  * (c) Olivier Poitrey <rs@dailymotion.com>
@@ -11,7 +17,6 @@
 
 @interface SDWebImageFrame : NSObject
 
-// This class is used for creating animated images via `animatedImageWithFrames` in `SDWebImageCoderHelper`. Attention if you need to specify animated images loop count, use `sd_imageLoopCount` property in `UIImage+MultiFormat`.
 
 /**
  The image of current frame. You should not set an animated image.

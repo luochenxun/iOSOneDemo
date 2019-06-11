@@ -1,10 +1,9 @@
 //
-//  HYSegmentedControl.h
-//  CustomSegControlView
+// HYSegmentedControl.h
+// iOSOneDemo
 //
-//  Created by sxzw on 14-6-12.
-//  Copyright (c) 2014年 sxzw. All rights reserved.
-//
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 
 #import <UIKit/UIKit.h>
 

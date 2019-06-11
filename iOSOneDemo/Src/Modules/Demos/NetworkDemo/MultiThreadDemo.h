@@ -1,11 +1,9 @@
 //
-//  MultiThreadDemo.h
-//  iOSOneDemo
+// MultiThreadDemo.h
+// iOSOneDemo
 //
-//  Created by luochenxun on 2018/1/10.
-//  Copyright © 2018年 Kacha-Mobile. All rights reserved.
-//
-//    多线程编程技术
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 
 #import "DemoController.h"
 

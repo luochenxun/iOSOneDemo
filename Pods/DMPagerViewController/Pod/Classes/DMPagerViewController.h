@@ -1,11 +1,9 @@
 //
-//  DMPagerViewController.h
-//  Pager controller like the one in Twitter or Tinder
+// DMPagerViewController.h
+// iOSOneDemo
 //
-//  Created by Daniele Margutti (me@danielemargutti.com) on 11/01/15.
-//  Copyright (c) 2015 http://www.danielemargutti.com All rights reserved.
-//	Distribuited under MIT License http://opensource.org/licenses/MIT
-//
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 
 #import <UIKit/UIKit.h>
 #import "DMPagerNavigationBar.h"

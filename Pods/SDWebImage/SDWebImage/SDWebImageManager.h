@@ -1,3 +1,9 @@
+//
+// SDWebImageManager.h
+// iOSOneDemo
+//
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 /*
  * This file is part of the SDWebImage package.
  * (c) Olivier Poitrey <rs@dailymotion.com>
@@ -183,7 +189,6 @@ SDWebImageManager *manager = [SDWebImageManager sharedManager];
                  progress:nil
                 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
                     if (image) {
-                        // do something with image
                     }
                 }];
 

@@ -1,3 +1,9 @@
+//
+// UIImageView+WebCache.h
+// iOSOneDemo
+//
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 /*
  * This file is part of the SDWebImage package.
  * (c) Olivier Poitrey <rs@dailymotion.com>
@@ -34,8 +40,6 @@
                  autorelease];
     }
  
-    // Here we use the provided sd_setImageWithURL: method to load the web image
-    // Ensure you use a placeholder image otherwise cells will be initialized with no image
     [cell.imageView sd_setImageWithURL:[NSURL URLWithString:@"http://example.com/image.jpg"]
                       placeholderImage:[UIImage imageNamed:@"placeholder"]];
  

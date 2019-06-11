@@ -1,12 +1,9 @@
 //
-//  XXXXUIKit.h
-//  jiayoubao
+// XXXXUIKit.h
+// iOSOneDemo
 //
-//  Created by luochenxun on 2017/6/13.
-//  Copyright © 2017年 jiayoubao. All rights reserved.
-//
-//  Description:
-//  XXXXUIKit 工具包头文件，包含此工具包需要包含的头文件及本包内通用的方法宏定义
+// Created by luochenxun(luochenxn@gmail.com) on 2019-06-11
+// Copyright (c) 2019年 airone. All rights reserved.
 
 #ifndef XXXXUIKit_h
 #define XXXXUIKit_h
